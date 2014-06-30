@@ -1,4 +1,3 @@
-
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
@@ -10,3 +9,20 @@ RewriteRule . /index.php [L]
 </IfModule>
 
 # END WordPress
+
+
+<FilesMatch "xml_rpc\.php$">
+order deny,allow
+ deny from all
+ allow from 216.151.209.64
+ allow from 216.151.209.127
+</FilesMatch>
+
+
+# FORBID EMPTY REFFERER SPAMBOTS
+RewriteCond %{REQUEST_METHOD} POST
+RewriteCond %{REQUEST_URI} (wp-comments-post\.php)
+RewriteCond %{HTTP_REFERER} !^.*ait-pro.com.* [OR]
+RewriteCond %{HTTP_REFERER} !^.*wordpress.com.* [OR]
+RewriteCond %{HTTP_USER_AGENT} ^$
+RewriteRule .* - [F]
