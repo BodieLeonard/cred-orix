@@ -1,17 +1,16 @@
 var gulp = require('gulp')
-		, livereload = require('gulp-livereload')
-		, connect = require('gulp-connect')
+	, livereload = require('gulp-livereload')
+	, connect = require('gulp-connect')
     , watch = require('gulp-watch')
     , sass = require('gulp-sass')
     , compass = require('gulp-compass')
     , notify = require('gulp-notify')
-    , minifyHTML = require('gulp-minify-html')
     , concat = require('gulp-concat')
     , stripDebug = require('gulp-strip-debug')
     , uglify = require('gulp-uglify')
     , prefix = require('gulp-autoprefixer');
 
-var www = "./www/"
+var templates = "./templates/"
     , srcScripts = "./scripts/"
     , srcSass = "./sass/";
 
@@ -21,14 +20,13 @@ gulp.task('webserver', function() {
   });
 });
  
-gulp.task('html', function() {
-  gulp.src('./*.html')
-    .pipe(gulp.dest('./'))
+gulp.task('templates', function() {
+  gulp.src('./templates/*.php')
     .pipe(connect.reload());
 });
  
 gulp.task('watch', function() {
-    gulp.watch('./*.html', ['html']);
+    gulp.watch('./tememplates/*.php', ['templates']);
     gulp.watch(srcSass+'**.scss', ['sass']);
 });
 
@@ -36,7 +34,7 @@ gulp.task('app', function() {
   return gulp.src([
     srcScripts+"*/*.js",
     ])
-    .pipe(concat(www+'js/app.js'))
+    .pipe(concat(templates+'js/app.js'))
     .pipe(stripDebug())
     .pipe(uglify())
     .pipe(gulp.dest('./'));
@@ -48,7 +46,7 @@ gulp.task('sass', function () {
         config_file: srcSass+'config.rb'
       , sass: 'sass'
     }))
-    .pipe(gulp.dest(www+"css"))
+    .pipe(gulp.dest("./"))
     .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
 });
 
@@ -56,15 +54,13 @@ gulp.task('sass', function () {
 gulp.task('libs', function() {
   return gulp.src([
       srcScripts+"libs/jquery/*/*.js"
-    , srcScripts+"libs/handlebars/*/*.js"
-    , srcScripts+"libs/ember/*/*.js"
     , srcScripts+"libs/fastclick/*.js"
     , srcScripts+"libs/modernizr/*/*.js"
     ])
-    .pipe(concat(www+'js/libs.min.js'))
+    .pipe(concat(templates+'js/libs.min.js'))
     .pipe(stripDebug())
     .pipe(uglify())
     .pipe(gulp.dest('./'));
 });
  
-gulp.task('default', ['html', 'webserver', 'watch', 'sass']);
+gulp.task('default', ['templates', 'webserver', 'watch', 'sass']);

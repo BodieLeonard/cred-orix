@@ -1,0 +1,82 @@
+article {
+	
+	position:relative;
+	color:$gray-dark;
+
+	img {
+		position: relative;
+		left: 50%;
+		margin-left: -135px;
+		margin-bottom:28px;
+	}
+
+	date {
+		font-family:"BrandonMed";
+		font-size: 14px;
+		color:$gray-light;
+		margin-bottom:25px;
+		text-transform:uppercase;
+		display:block;
+	}
+
+	h1 {
+		font-size:15px;
+		text-align: left;
+		text-transform: uppercase;
+		margin-bottom:15px;
+	}
+
+	blockquote {
+		text-align:center;
+		font-size:13px;
+		margin-bottom:43px;
+		line-height:25px;
+	}
+
+	.button {
+		font-size:12px;
+		display:block;
+		text-align: center;
+		font-family:"BrandonMed";
+		text-transform:uppercase;
+		background:$white-alpha;
+		border: 1px solid $gray-alpha;
+		padding:10px 50px;
+		color: $gray-light;
+		margin:0 50px 20px 50px;
+		margin-bottom:43px;
+	}
+
+	&.solution {
+		h1 {
+			text-align: center;
+			text-transform: uppercase;
+		}
+	}
+
+	&.article {
+
+		blockquote {
+			text-align:left;
+			margin-left:0;
+		}
+		
+		h1{
+			font-family:"MerriweatherReg";
+			font-size:18px;
+			text-transform: none;
+			margin-bottom:5px;
+		}
+
+		img {
+			position: inherit;
+			left: 0;
+			margin-left: 0;
+			margin-bottom:17px;
+		}
+		.button {
+			margin-left:0;
+
+		}
+	}
+}

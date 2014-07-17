@@ -1,0 +1,47 @@
+/*!
+Theme Name: Orix
+Theme URI: http://orix.com
+Author: Orix
+Author URI: http://orix.com/
+Description: Orix site design for 2014.
+Version: 1.3-wpcom
+License: GNU General Public License v2 or later
+License URI: License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Domain Path: /languages/
+Text Domain: Orix.com
+Tags:
+*/
+@import "susy";
+@import "compass";
+@import "compass/css3";
+@import "compass/css3/border-radius";
+@import "compass/css3/text-shadow";
+@import "compass/css3/box-shadow";
+@import "compass/css3/text-shadow";
+
+// configure the style from settings
+@import 'settings';
+
+// reset styles should stay at the top
+@import 'reset';
+
+// move mixins to their own partial
+@import 'mixins';
+
+// feel free to add any new files you want; if you add them this list they'll be included
+@import 'global';
+@import 'base';
+@import 'articles';
+@import 'typography';
+@import 'forms';
+@import 'layout';
+@import 'menu';
+@import 'content';
+@import 'postformats';
+@import 'media';
+@import 'navigation';
+@import 'comments';
+@import 'widgets';
+@import 'infinitescroll';
+
+@import 'font';

@@ -1,0 +1,29 @@
+@include font-face(
+	"BrandonReg", 
+	font-files("brandon/brandon-reg.woff", 
+						 "brandon/brandon-reg.ttf", 
+						 "brandon/brandon-reg.svg"), 
+	"brandon/brandon-reg.eot"
+);
+
+@include font-face(
+	"BrandonMed", 
+	font-files("brandon/brandon-med.woff", 
+						 "brandon/brandon-med.ttf", 
+						 "brandon/brandon-med.svg"), 
+	"brandon/brandon-med.eot"
+);
+
+@include font-face(
+	"MerriweatherReg", 
+	font-files("merriweather/merriweather-reg.woff", 
+						 "merriweather/merriweather-reg.ttf", 
+						 "merriweather/merriweather-reg.svg"), 
+	"merriweather/merriweather-reg.eot"
+);
+
+
+body {
+	font-family:"MerriweatherReg";
+}
+
