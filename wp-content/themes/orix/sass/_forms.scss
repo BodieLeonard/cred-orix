@@ -1,3 +1,8 @@
+form {
+	margin-bottom:20px;
+
+}
+
 button,
 input,
 select,
@@ -84,11 +89,45 @@ input[type="email"],
 input[type="url"],
 input[type="password"],
 input[type="search"] {
-	padding: 3px;
+	padding:10px 15px;
+	margin-bottom:10px;
+	border-radius:0;
+	background:none;
+	border:1px solid #73767A;
+	font-family:"MerriweatherReg";
+	width:100%;
+	font-size:14px;
+	color:#737679;
+}
+input[type="submit"] {
+	padding:10px 65px;
+	font-family:"BrandonReg";
+	text-transform:uppercase;
+	border-radius:0;
+	background:none;
+	border:1px solid #73767A;
+	box-shadow:none;
+	text-shadow:none;
+	color:#888484;
+
+	&:hover {
+		box-shadow:none;
+	}
 }
 textarea {
 	overflow: auto; /* Removes default vertical scrollbar in IE6/7/8/9 */
-	padding-left: 3px;
+	padding: 10px 15px;
 	vertical-align: top; /* Improves readability and alignment in all browsers */
 	width: 98%;
+	margin-bottom:10px;
+	border-radius:0;
+	background:none;
+	border:1px solid #73767A;
+	font-family:"MerriweatherReg";
+	font-size:14px;
+	width:100%;
+	color:#737679;
 }
+
+
+

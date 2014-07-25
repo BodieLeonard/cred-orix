@@ -1,16 +1,15 @@
 # Require any additional compass plugins here.
+require 'susy' 
 
-
-# Set this to the root of your project when deployed:
-http_path = "http://orix.com"
+# Set this to the root of your project when deployed:require 'susy' 
+http_path = "http://dev.orix.com"
 css_dir = "../"
 sass_dir = "./"
 #images_dir = "../www/css/img"
-fonts_dir = "/wp-content/themes/orix/fonts"
+fonts_dir = "wp-content/themes/orix/fonts"
 
 output_style = :compressed #:expanded or :nested or :compact or :compressed
 cache = false
-
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
 #relative_assets = true

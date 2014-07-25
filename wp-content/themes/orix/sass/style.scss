@@ -11,13 +11,16 @@ Domain Path: /languages/
 Text Domain: Orix.com
 Tags:
 */
-@import "susy";
+
 @import "compass";
 @import "compass/css3";
 @import "compass/css3/border-radius";
 @import "compass/css3/text-shadow";
 @import "compass/css3/box-shadow";
 @import "compass/css3/text-shadow";
+@import "bootstrap/bootstrap";
+@import "susy";
+@import "font-awesome/font-awesome";
 
 // configure the style from settings
 @import 'settings';
@@ -30,7 +33,10 @@ Tags:
 
 // feel free to add any new files you want; if you add them this list they'll be included
 @import 'global';
+@import 'footer';
+@import 'aside';
 @import 'base';
+@import 'hero';
 @import 'articles';
 @import 'typography';
 @import 'forms';

@@ -1,0 +1,67 @@
+footer.site-footer {
+	
+	background-color:$gray-darker;
+	padding:70px 0;
+	color:white;
+	margin-top:150px;
+
+	.site-info {
+		max-width: $site-max-width;
+		margin: 0 auto;
+		p {
+			margin:0;
+		}
+		.copy {
+			clear:both;
+			border-top:1px solid $gray-light;
+			margin-top:60px;
+			padding-top:30px;
+			color:$gray;
+			font-size:13px;
+			a{
+				color:$gray;
+			}
+		}
+		.social {
+			margin-top:30px;
+			a{
+				float:left;
+				margin-right: 30px;
+			}
+		}
+		.logo {
+			background:url(images/orix-logo-gray.png) top left no-repeat;
+			width:218px;
+			height:78px;
+			margin-bottom:30px;
+		}
+		.list {
+			.address {
+				h1{
+					color:white;
+				}
+				p {
+					font-size:13px;
+					color:$gray;
+				}
+			}
+
+			h1 {
+				font-family:"GothamLight";
+				text-transform:uppercase;
+				color:$gray;
+				font-size:18px;
+				margin-bottom:20px;
+			}
+			a {
+				display:block;
+				color:white;
+				text-transform:uppercase;
+				font-family:"ProximaLight";
+				font-size:14px;
+				text-decoration:none;
+				line-height:30px;
+			}
+		}
+	}
+}

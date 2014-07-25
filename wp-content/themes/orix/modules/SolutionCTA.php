@@ -12,7 +12,7 @@ class SolutionCTA {
 		
 		?>
 		
-		<article class="solution">
+		<article class="solution col-md-4">
 			<img src='<?php echo $thumbnail; ?>'>
 			<h1><?php echo $headline; ?></h1>
 			<blockquote><?php echo $excerpt; ?></blockquote>

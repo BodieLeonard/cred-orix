@@ -2,4 +2,110 @@ body {
 	background:url('images/background-white.png') top left repeat;
 }
 
+.site-branding {
+	text-indent:-9999px;
+	width: 190px;
+	float: left;
+
+	.site-title {
+		a {
+
+			background:url('images/orix-logo.png') top left no-repeat;
+			height: 50px;
+			width: 190px;
+			float: left;
+		}
+	}
+}
+
+.fa {
+	font-size:20px;
+}
+
+.site-content {
+	max-width: $site-max-width;
+	margin: 0 auto;
+}
+
+.bridge-outline {
+	width: 1466px;
+	height:270px;
+	background-size: contain;
+	background-repeat:no-repeat;
+	background-position:top center;
+	left: -140px;
+	position: relative;
+	margin-bottom:40px;
+}
+
+body #content hr {
+	border-bottom: 1px solid white !important;
+	margin-bottom: 80px;
+	clear: both;
+}
+
+.bullet {
+	h1 {
+		text-align:center;
+
+	}
+	.diamond {
+		background:url('images/diamond-red.png') top center no-repeat;
+		padding: 14px;
+		margin-left:-20px;
+		display:block;
+		text-align:center;
+		margin-bottom:25px;
+	}
+}
+
+.content-area {
+	ul {
+		margin:0;
+		padding:0;
+		margin-left:15px;
+
+		li {
+			margin:0;
+			padding:0;
+			font-size: 13px;
+			line-height: 25px;
+		}
+	}
+}
+
+section {
+	
+	&.centered {
+		text-align:center;
+		margin-bottom:50px;
+		padding:0 60px;
+
+		h1 {
+			font-size:21px;
+			text-transform:uppercase;
+			font-family:"BrandonMed";
+			margin-bottom:30px
+		}
+		p {
+			font-size:14px;
+			font-family: "MerriweatherItalic";
+			margin-bottom:5px;
+		}
+	}
+
+	&.boxed {
+		max-width: $site-max-width;
+		margin: 0 auto;
+		border: 1px solid $gray-alpha;
+		padding: 30px 0px;
+		margin-bottom: 40px;
+		background: $white-alpha;
+		text-align:center;
+		p {
+			margin:0;
+		}
+	}
+}
+
 

@@ -1,7 +1,35 @@
+.holder-solutions,  .holder-articles{
+	
+	
+	clear:both;
+}
+
 article {
 	
-	position:relative;
-	color:$gray-dark;
+	&.deal {
+		margin-bottom:80px;
+		img{
+			left:0;
+			margin-left:0;
+		}
+		h1{
+
+		}
+		blockquote {
+			text-align:left;
+			margin:0;
+		}
+	}
+	&.full {
+
+		margin-bottom:20px;
+		p {
+			font-size: 13px;
+			line-height: 25px;
+		}
+	}
+	
+	color:$gray-dark;	
 
 	img {
 		position: relative;
@@ -13,13 +41,15 @@ article {
 	date {
 		font-family:"BrandonMed";
 		font-size: 14px;
-		color:$gray-light;
+		color:$gray-lighter;
 		margin-bottom:25px;
 		text-transform:uppercase;
 		display:block;
+		letter-spacing: $letter-spacing;
 	}
 
 	h1 {
+		letter-spacing: $letter-spacing;
 		font-size:15px;
 		text-align: left;
 		text-transform: uppercase;
@@ -40,12 +70,23 @@ article {
 		font-family:"BrandonMed";
 		text-transform:uppercase;
 		background:$white-alpha;
-		border: 1px solid $gray-alpha;
+		border: 1px solid $gray-lighter;
 		padding:10px 50px;
 		color: $gray-light;
-		margin:0 50px 20px 50px;
+		margin:0 auto;
 		margin-bottom:43px;
+		letter-spacing: $letter-spacing;
+		max-width:200px;
+		text-decoration:none;
+		@include transition(all .3s .3s, color .3s, background-color .3s);
+
+		&:hover {
+			color: white;
+			background-color: $gray-lighter;
+			@include transition(all .3s .3s, color .3s, background-color .3s);
+		}
 	}
+
 
 	&.solution {
 		h1 {
@@ -65,7 +106,9 @@ article {
 			font-family:"MerriweatherReg";
 			font-size:18px;
 			text-transform: none;
-			margin-bottom:5px;
+			margin-bottom:15px;
+			letter-spacing: 0px;
+			line-height: 25px;
 		}
 
 		img {
@@ -78,5 +121,9 @@ article {
 			margin-left:0;
 
 		}
+	}
+	.basic.button {
+		margin-left:0;
+		max-width: 300px;
 	}
 }

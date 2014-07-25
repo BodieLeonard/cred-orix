@@ -6,10 +6,16 @@
 $base-font: sans-serif;
 $header-font: $base-font; // you can refer to other variables
 
+$gray-darker:#292b2d;
 $gray-dark: #4d4b4b;
+$gray:#737679;
 $gray-light: #999;
+$gray-lighter: #ccc;
 $gray-alpha: rgba(102, 102, 102, .4);
+$gray-medium: #d4d4d4;
 $white-alpha: rgba(255, 255, 255, .4);
+
+$letter-spacing: 2px;
 
 
 // base color scheme
@@ -18,7 +24,7 @@ $text-color: #404040;
 $link-color: royalblue;
 $link-visited: $gray-light;
 
-
+$site-max-width: 1200px;
 
 // Supported Values for $layout:
 //  null | content-sidebar | sidebar-content

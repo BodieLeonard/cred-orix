@@ -1,4 +1,12 @@
 @include font-face(
+	"BrandonLight", 
+	font-files("brandon/brandon-light.woff", 
+						 "brandon/brandon-light.ttf", 
+						 "brandon/brandon-light.svg"), 
+	"brandon/brandon-light.eot"
+);
+
+@include font-face(
 	"BrandonReg", 
 	font-files("brandon/brandon-reg.woff", 
 						 "brandon/brandon-reg.ttf", 
@@ -21,6 +29,77 @@
 						 "merriweather/merriweather-reg.svg"), 
 	"merriweather/merriweather-reg.eot"
 );
+
+@include font-face(
+	"MerriweatherItalic", 
+	font-files("merriweather/merriweather-italic.woff", 
+						 "merriweather/merriweather-italic.ttf", 
+						 "merriweather/merriweather-italic.svg"), 
+	"merriweather/merriweather-italic.eot"
+);
+
+@include font-face(
+	"GothamLight", 
+	font-files("gotham/gothamhtf-xlight.woff", 
+						 "gotham/gothamhtf-xlight.ttf", 
+						 "gotham/gothamhtf-xlight.svg"), 
+	"gotham/gothamhtf-xlight.eot"
+);
+
+@include font-face(
+	"ProximaLight", 
+	font-files("proximanova/proximanova-light.woff", 
+						 "proximanova/proximanova-light.ttf", 
+						 "proximanova/proximanova-light.svg"), 
+	"proximanova/proximanova-light.eot"
+);
+
+@include font-face(
+	"icomoon", 
+	font-files("icomoon/icomoon.woff", 
+						 "icomoon/icomoon.ttf", 
+						 "icomoon/icomoon.svg"), 
+	"icomoon/icomoon.eot"
+);
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	color:#ee2e24;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-uniE629:before {
+	content: "\e629";
+}
+.icon-pencil:before {
+	content: "\e601";
+}
+.icon-house:before {
+	content: "\e600";
+}
+.icon-link:before {
+	content: "\e602";
+}
+.icon-tools:before {
+	content: "\e603";
+}
+.icon-database:before {
+	content: "\e604";
+}
+.icon-graph:before {
+	content: "\e627";
+}
+.icon-lock:before {
+	content: "\e628";
+}
 
 
 body {
