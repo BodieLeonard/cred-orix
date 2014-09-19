@@ -41,8 +41,8 @@
 				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 			</div>
 
-			<button class="menu-toggle"><?php _e( 'Primary Menu', 'orix' ); ?></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary' , 'show_home'=>false ) ); ?>
+			<button class="menu-toggle"><i class="fa fa-bars"></i></button>
+			<?php wp_nav_menu( array( 'theme_location' => 'main-menu' , 'show_home'=>false ) ); ?>
 		</nav><!-- #site-navigation -->
 
 	</header><!-- #masthead -->

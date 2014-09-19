@@ -1,8 +1,8 @@
 # Require any additional compass plugins here.
-require 'susy' 
+#require 'susy' 
 
 # Set this to the root of your project when deployed:require 'susy' 
-http_path = "http://dev.orix.com"
+http_path = "/"
 css_dir = "../"
 sass_dir = "./"
 #images_dir = "../www/css/img"

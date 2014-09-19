@@ -1,6 +1,9 @@
 form {
 	margin-bottom:20px;
-
+	input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"],
+	input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus, textarea:focus {
+		color:white;
+	}
 }
 
 button,
@@ -127,6 +130,14 @@ textarea {
 	font-size:14px;
 	width:100%;
 	color:#737679;
+}
+footer {
+	form {
+		color:white;
+	}
+	textarea {
+		height: 150px;
+	}
 }
 
 

@@ -14,11 +14,13 @@ class ArticleCTA {
 		?>
 		
 		<article class="article col-md-4">
-			<img src='<?php echo $thumbnail; ?>'>
+			<div class="col-md-10">
+			<div class="thumb"><?php echo $thumbnail; ?></div>
 			<h1><?php echo $headline; ?></h1>
 			<date><?php echo $date; ?></date>
 			<blockquote><?php echo $excerpt; ?></blockquote>
 			<a class='button' href="<?php echo $link; ?>">Read More</a>
+			</div>
 		</article>
 
 		<?php 

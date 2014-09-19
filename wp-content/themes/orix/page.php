@@ -12,7 +12,7 @@
 
 get_header(); ?>
 
-	<div class="hero" style="background-image: url(<?php echo get_template_directory_uri() . '/fpo/hero-homepage.jpg' ?>) ">
+	<div class="hero short" style="background-image: url(<?php echo wp_get_attachment_image_src( get_post_thumbnail_id(), 'full')[0] ?>) ">
 		
 	</div>
 
@@ -23,8 +23,15 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
+				<section class='centered'>
+					<h1><?php the_title(); ?></h1>
+					<p><?php echo get_post_meta($post->ID, 'headline', true); ?></p>
+				</section>
+
+				<article class="full  simple">
 				<?php get_template_part( 'content', 'page' ); ?>
-				<?php get_template_part( 'content', 'newsroom' ); ?>
+				</article>
+				<?php #get_template_part( 'content', 'newsroom' ); ?>
 
 			<?php endwhile; // end of the loop. ?>
 

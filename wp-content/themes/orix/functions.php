@@ -95,6 +95,7 @@ function orix_scripts() {
 	wp_enqueue_style( 'orix-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'jQuery', get_template_directory_uri() . '/js/jquery-1.11.1.min.js', array(), '20120206', true );
+	wp_enqueue_script( 'twitterBootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js', array(), '20120206', true );
 	wp_enqueue_script( 'orix-navigation', get_template_directory_uri() . '/js/navigation.js', array('jQuery'), '20120206', true );
 	wp_enqueue_script( 'parallax', get_template_directory_uri() . '/js/jquery.parallax-1.1.3.js', array('jQuery'), '20140721', true );
 	
@@ -108,6 +109,95 @@ function orix_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'orix_scripts' );
 
+
+
+/**
+*	Limit the character count on excerpts
+*/
+function string_limit_words($string, $word_limit) {
+
+  $words = explode(' ', $string, ($word_limit + 1));
+  if(count($words) > $word_limit)
+  array_pop($words);
+  return implode(' ', $words) . "...";
+}
+
+/**
+*	Style login screen
+*/
+function custom_login_css() {
+	echo '<link rel="stylesheet" media="screen" type="text/css" href="'.get_stylesheet_directory_uri().'/style.css" >';
+}
+add_action('login_head', 'custom_login_css');
+
+/**
+* Remove menu items in admin
+*/
+function remove_menus(){
+  
+  remove_menu_page( 'edit-comments.php' );                  //Dashboard
+  
+}
+add_action( 'admin_menu', 'remove_menus' );
+
+/** 
+*	Multiple featured images for post
+*/
+if (class_exists('MultiPostThumbnails')) {
+	new MultiPostThumbnails(array(
+		'label' => 'Secondary Image',
+		'id' => 'secondary-image',
+		'post_type' => 'capitalsolution'
+ 	));
+ }
+
+ /**
+ * Get only the url of the thumbnail
+ */
+ function get_the_post_thumbnail_src($img) {
+	  return (preg_match('~\bsrc="([^"]++)"~', $img, $matches)) ? $matches[1] : '';
+	}
+
+	/**
+	* Add css to admin panel
+	*/
+	function custom_colors() {
+		 echo '<style type="text/css">
+			   #wpcontent{ margin-left:220px; };
+				 #adminmenuwrap, #adminmenu{ width:200px; }
+			 </style>';
+  };
+  add_action('wp_head', 'custom_colors');
+
+  /**
+  * Managemnts link shortcode
+  */
+  function management_func( $atts ) {
+     $link= $atts['link'];
+     $name = $atts['name'];
+
+     return array("name"=>$name, "link"=>$link);
+	}
+	add_shortcode( 'management', 'management_func' );
+
+
+function my_custom_post_type_archive_where($where,$args){  
+    $post_type  = isset($args['post_type'])  ? $args['post_type']  : 'post';  
+    $where = "WHERE post_type = '$post_type' AND post_status = 'publish'";
+    return $where;  
+}
+add_filter( 'getarchives_where','my_custom_post_type_archive_where',10,2);
+
+
+/**
+* Allow vcard upload
+**/
+add_filter('upload_mimes', 'custom_upload_mimes');
+function custom_upload_mimes ( $existing_mimes=array() ) {
+	// add your extension to the array
+	$existing_mimes['vcf'] = 'text/x-vcard';
+	return $existing_mimes;
+}
 /**
  * Implement the Custom Header feature.
  */

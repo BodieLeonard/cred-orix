@@ -6,20 +6,18 @@
  */
 ?>
 
-<aside class="col-xs-12 col-md-3">
+<aside class="col-xs-12 col-md-12">
 	<ul>
 		<li>
 			<p>Career Links</p>
 		</li>
-		<li>
-			<a href="#"><strong>Current Opportunities</strong></a>
-		</li>
-		<li>
-			<a href="#"><strong>Benefits</strong></a>
-		</li>
-		<li>
-			<a href="#"><strong>College Recruiting and Analyst Training</strong></a>
-		</li>
 		
+		<?php 
+			$args = array( 'post_type' => 'career', 'post__not_in' => array( 151 ));
+			$loop = new WP_Query( $args );
+			while ( $loop->have_posts() ) : $loop->the_post();
+			    echo '<li><a href="/'.$post->post_name.'">'.$post->post_name.'</a></li>';
+			endwhile;
+		?>		
 	</ul>
 </aside>

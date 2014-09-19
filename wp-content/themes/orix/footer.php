@@ -17,45 +17,42 @@
 				<div class="logo"></div>
 
 				<div class="address">
-					<h1>Orix Americas</h1>
+					<h1>ORIX Americas</h1>
 					<p>1717 Main St. - Ste 1100</p>
 					<p>Dallas, TX 75201</p>
 					<p>214.237.2000</p>
 				</div>
 
 				<div class="social">
-					<a href="#"><i class="fa fa-facebook"></i></a>
 					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-linkedin"></i></a>
+					
 				</div>
 		
 			</div>
 
 			<div class="col-md-3 list">
 				<h1>Company</h1>
-				<a href="#">Our Firm</a>
-				<a href="#">Capital Solutions</a>
-				<a href="#">Proven Success</a>
-				<a href="#">Locations</a>
-				<a href="#">Contact</a>
+				<?php wp_nav_menu( array( 'theme_location' => 'main-menu' , 'show_home'=>false, 'depth'=>1 ,'orderby' => 'menu_order', 'order' => 'asc') ); ?>
 			</div>
 
 			<div class="col-md-3 list">
 				<h1>CAPITAL SOLUTIONS</h1>
-				<a href="#">MUnicipal finance</a>
-				<a href="#">corporate capital</a>
-				<a href="#">real estate</a>
-				<a href="#">asset management</a>
-				<a href="#">healthcare</a>
-				<a href="#">energy</a>
+				
+				<?php 
+
+					$args = array( 'post_type' => 'capitalsolution', 'post_parent' => 0, 'orderby' => 'title', 'order' => 'asc' );
+					$loop = new WP_Query( $args );
+					while ( $loop->have_posts() ) : $loop->the_post();
+					    echo '<a href="/'.$post->post_name.'">'.$post->post_title.'</a>';
+					endwhile;
+				?>
+
 			</div>
 
 			<div class="col-md-3 list">
 				<form>
-					<h1>Contact Us</h1>
-					<input type="text" placeholder="Your Name">
-					<input type="text" placeholder="Email Address">
-					<textarea placeholder="Message"></textarea>
-					<input type="submit" value="submit">
+					<?php echo do_shortcode('[contact-form-7 id="3135" title="Contact Us"]'); ?>
 				</form>
 			</div>
 
@@ -64,7 +61,7 @@
 					<p>Copyright 2014 ORIX USA</p>
 				</div>
 				<div class='col-md-3'>
-					<p><a href="#">Privacy Policy</a> | <a href="#">Legal Information</a></p>
+					<p><a href="/privacy-policy">Privacy Policy</a> | <a href="/legal">Legal Information</a></p>
 				</div>
 				
 			</div>

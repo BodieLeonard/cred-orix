@@ -40,8 +40,8 @@ function register_cpt_career() {
         'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,
-        'menu_position' => 0,
-        'menu_icon' => 'dashicons-nametag',
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-businessman',
         'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
@@ -56,7 +56,22 @@ function register_cpt_career() {
     
 };
 
-
+function capital_career_taxonomy() {  
+    register_taxonomy(  
+        'careercategory',  //The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces). 
+        'career',        //post type name
+        array(  
+            'hierarchical' => true,  
+            'label' => 'Career Categories',  //Display name
+            'query_var' => true,
+            'rewrite' => array(
+                'slug' => 'career', // This controls the base slug that will display before each term
+                'with_front' => false // Don't display the category base before 
+            )
+        )  
+    );  
+}  
+add_action( 'init', 'capital_career_taxonomy');
 
 
 

@@ -13,7 +13,6 @@
 get_header(); ?>
 
 	<div class="hero" style="background-image: url(<?php echo get_template_directory_uri() . '/fpo/hero-homepage.jpg' ?>) ">
-		
 	</div>
 
 	<div id="content" class="site-content">

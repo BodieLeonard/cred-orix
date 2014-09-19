@@ -7,25 +7,78 @@
 ?>
 <?php
 
-echo "<hr>";
 
-echo "<section class='centered'><h1>ORIX NEWSROOM</h1><p>Nec dubitamus multa iter quae et nos invenerat. Non equidem invideo, miror magis posuere velit aliquet. At nos hinc posthac, sitientis piros Afros. Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Mercedem aut nummos unde unde extricat, amaras.</p> </section>";
+global $pageSlug; 
+$onHomePage = true;
 
-echo "<div class='holder-articles row'>";
+if (empty($pageSlug)) {
 
-//WordPress loop for custom post type
-$my_query = new WP_Query('post_type=news&posts_per_page=-1');
-while ($my_query->have_posts()) : $my_query->the_post();
-			
-  $articleCta = ArticleCTA::create([
-  	"thumbnail"=> wp_get_attachment_image_src( get_post_thumbnail_id(), 'large')[0],
-  	"headline"=>$post->post_title,
-  	"date"=>$post->post_date,
-  	"excerpt"=>get_the_excerpt(),
-  	"link"=>$post->guid
-  ]);
+	$filter = "news-featured";
+	$posts = query_posts(array( 'post_type' => 'news', 'post_status'=>'publish', 'posts_per_page' => 1, 'orderby'=> 'date', 'order' => 'DEC', "newsscategory"=>$filter)); 
 
-endwhile;  wp_reset_query();
-echo "</div>";
+} else {
+	$onHomePage = false;
+	$filter = "news-".$pageSlug;
+	$posts = query_posts(array( 'post_type' => 'news', 'post_status'=>'publish', 'posts_per_page' => 3, 'orderby'=> 'date', 'order' => 'DEC', "newsscategory"=>$filter)); 
+	
+};
+
+$postsCount = count($posts);
+
+if ($postsCount >=1) {
+	echo "<hr>";
+
+	echo "<section class='centered'><h1>ORIX NEWSROOM</h1></section>";
+
+	echo "<div class='holder-articles row'>";
+
+	//WordPress loop for custom post type
+	//$my_query = new WP_Query('post_type=news&posts_per_page=3');
+
+	//while ($my_query->have_posts()) : $my_query->the_post();
+	while (have_posts()) : the_post(); 	
+		$excerpt = get_the_excerpt();
+		$headline = $post->post_title; 
+	  $articleCta = ArticleCTA::create([
+	  	"thumbnail"=> get_the_post_thumbnail(),
+	  	"headline"=>string_limit_words($headline,8),
+	  	"date"=>$post->post_date,
+	  	"excerpt"=> string_limit_words($excerpt,25),
+	  	"link"=>$post->guid."&filter=".$pageSlug
+	  ]);
+
+	endwhile;  wp_reset_query();
+
+
+	if ($onHomePage) {
+
+		$args = array(
+	    'post_type' => 'news',
+	    'post_status'=>'publish',
+	    'posts_per_page' => 2,
+	    'orderby'=> 'date', 
+	    'order' => 'DEC',
+	    'tax_query' =>  array( 'taxonomy' => 'newsscategory', 'terms' => 'news-featured','operator' => 'NOT IN' )
+    );
+		query_posts($args); 
+
+		while (have_posts()) : the_post();
+
+			$excerpt = get_the_excerpt();
+
+		  $articleCta = ArticleCTA::create([
+		  	"thumbnail"=> get_the_post_thumbnail(),
+		  	"headline"=>$post->post_title,
+		  	"date"=>$post->post_date,
+		  	"excerpt"=> string_limit_words($excerpt,25),
+		  	"link"=>$post->guid."&filter=".$pageSlug
+		  ]);
+
+		endwhile;  wp_reset_query();
+	}
+
+	echo "</div>";
+
+};
 
 ?>

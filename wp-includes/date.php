@@ -48,6 +48,9 @@ class WP_Date_Query {
 	/**
 	 * Constructor.
 	 *
+	 * @since 3.7.0
+	 * @since 4.0.0 The $inclusive logic was updated to include all times within the date range.
+	 *
 	 * @param array $date_query {
 	 *     One or more associative arrays of date query parameters.
 	 *
@@ -81,7 +84,7 @@ class WP_Date_Query {
 	 *                                     Default (string:empty)|(array:last day of month). Accepts numbers 1-31.
 	 *             }
 	 *             @type string       $column    Optional. Used to add a clause comparing a column other than the column
-	 *                                           specified in the top-level $column paramater.  Default is the value
+	 *                                           specified in the top-level $column parameter.  Default is the value
 	 *                                           of top-level $column. Accepts 'post_date', 'post_date_gmt',
 	 *                                           'post_modified', 'post_modified_gmt', 'comment_date', 'comment_date_gmt'.
 	 *             @type string       $compare   Optional. The comparison operator. Default '='. Accepts '=', '!=',
@@ -235,19 +238,23 @@ class WP_Date_Query {
 
 		$compare = $this->get_compare( $query );
 
+		$inclusive = ! empty( $query['inclusive'] );
+
+		// Assign greater- and less-than values.
 		$lt = '<';
 		$gt = '>';
-		if ( ! empty( $query['inclusive'] ) ) {
+
+		if ( $inclusive ) {
 			$lt .= '=';
 			$gt .= '=';
 		}
 
 		// Range queries
 		if ( ! empty( $query['after'] ) )
-			$where_parts[] = $wpdb->prepare( "$column $gt %s", $this->build_mysql_datetime( $query['after'], true ) );
+			$where_parts[] = $wpdb->prepare( "$column $gt %s", $this->build_mysql_datetime( $query['after'], ! $inclusive ) );
 
 		if ( ! empty( $query['before'] ) )
-			$where_parts[] = $wpdb->prepare( "$column $lt %s", $this->build_mysql_datetime( $query['before'], false ) );
+			$where_parts[] = $wpdb->prepare( "$column $lt %s", $this->build_mysql_datetime( $query['before'], $inclusive ) );
 
 		// Specific value queries
 

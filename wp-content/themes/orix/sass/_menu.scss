@@ -1,5 +1,11 @@
 /* =Menu
 ----------------------------------------------- */
+
+.menu-toggle {
+	float: right;
+
+}
+
 header {
 	clear: both;
 	display: block;
@@ -12,8 +18,7 @@ header {
 	padding-left: 5%;
 	padding-right: 5%;
 	z-index: 500;
-	padding-top:10px;
-	padding-bottom:10px;
+	
 	background:none;
 	@include transition(background-color .3s .3s, color .3s);
 
@@ -38,6 +43,9 @@ header {
 	.main-navigation ul li a{
 		color:black;
 	}
+	.main-navigation ul ul a{
+		color:white;
+	}
 
 	.site-branding {
 		.site-title a{
@@ -51,7 +59,7 @@ header {
 	max-width: $site-max-width;
 	margin: 0 auto;
 	width: 100%;
-	margin-top: 10px;
+	
 	letter-spacing: $letter-spacing;
 
 	// first level
@@ -60,17 +68,24 @@ header {
 		list-style: none;
 		margin: 0;
 		padding-left: 0;
-		margin-top: 15px;
+		
 
 		li {
 			float: left;
 			position: relative;
-			margin-left:50px;
+			margin-left:10px;
+
+			&.active {
+				li {
+					
+				}	
+			}
 
 			a {
 				display: block;
 				text-decoration: none;
 				color:$gray-medium;
+				padding: 20px 10px;
 
 				&:hover {
 					@include transition(all .3s .3s, color .3s, background-color .5s);
@@ -91,22 +106,56 @@ header {
 
 		// second level
 		ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 			display: none;
 			float: left;
 			position: absolute;
-				top: $vspacing;
-				left: 0;
+			left: 0;
 			z-index: 99999;
+			background: $black-alpha;
+			border-top: 3px solid #FF0000;
+			width: 320px;
+
+			&:before {
+				content:"";
+				display:block;
+				background:url(/wp-content/themes/orix/images/arrow-up-red.png) no-repeat;
+				width:20px;
+				height:20px;
+				position: absolute;
+				top: -10px;
+				left: 40px;
+			}
 
 			&:hover {
-				> a {};
+				> a {
+					color:white;
+				};
 			}
 
 			li {
+				
+				margin-left:0;
+				width: 100%;
+				color:white;
+
+				&:hover {
+					background:white;
+					color:#ff0000 !important;
+
+					a {
+						color:#ff0000;
+					}
+				};
+
 				a {
-					width: 200px;
-					&:hover {};
+					width: 100%;
+					padding: 15px 20px;
+					border-bottom:1px solid #444444;
+
+					&:hover {
+						background:white;
+						color:#ff0000 !important;
+					};
 				}
 			}
 
@@ -114,6 +163,21 @@ header {
 			ul {
 				left: 100%;
 				top: 0;
+				border-top:none;
+				background:white;
+				width:250px;
+
+				&:before {
+					display:none;
+					background:none;
+				}
+
+				li {
+					a {
+						color:#ff0000 !important;
+						border-bottom:1px solid $gray-alpha;
+					}
+				}
 			}
 
 		}
@@ -127,13 +191,3 @@ header {
 	cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
-  .menu-toggle,
-  .main-navigation.toggled .nav-menu {
-    display: block;
-  }
-
-  .main-navigation ul {
-    display: none;
-  }
-}

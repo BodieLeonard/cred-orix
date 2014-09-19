@@ -1,5 +1,5 @@
 .hero {
-	
+	background-repeat: no-repeat;
 	position:relative;
 	margin-bottom: 40px;
 	background-position:top center;
@@ -31,33 +31,11 @@
 			font-family: "BrandonReg";
 			font-style: normal;
 			letter-spacing: 2px;
+			text-transform: uppercase;
 		}
 	}
 }
 
 
-@media screen and (min-width: $screen-sm-min) {
-  
-  .hero {
-    height:660px;
 
-    &.short {
-    	height:400px;
-    }
-    
-
-    .hero-article {
-    	top:25%;
-    	width: 990px;
-    	left: 50%;
-			margin-left: -495px;
-			
-
-    	h1 {
-    		font-size: 40px;
-    	}
-    }
-  }
-
-}
 

@@ -12,19 +12,29 @@
 
 get_header(); ?>
 
-	<div class="hero short" style="background-image: url(<?php echo get_template_directory_uri() . '/fpo/hero-homepage.jpg' ?>) ">
+	<div class="hero short" style="background-image: url(<?php echo get_template_directory_uri() . '/fpo/hero-careers.jpg' ?>) ">
 		
 	</div>
 
 	<div id="content" class="site-content">
 
+	<section class='centered '>
+			<h1>ORIX NEWSROOM</h1>
+		</section>
+
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main page-secondary" role="main ">
+
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
 				<?php get_template_part( 'content', 'newsroom-full' ); ?>
-				<?php get_sidebar(); ?>
+				
+
+				<div class="col-xs-12 col-md-3">
+					<?php get_template_part( 'content', 'sidebar-news-archive' ); ?>
+				</div>
+
 			<?php endwhile; // end of the loop. ?>
 
 		</main><!-- #main -->
@@ -32,3 +42,7 @@ get_header(); ?>
 
 
 <?php get_footer(); ?>
+
+
+
+

@@ -17,7 +17,7 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'orix');
+define('DB_NAME', 'Orix_prod');
 
 /** MySQL database username */
 define('DB_USER', 'root');
