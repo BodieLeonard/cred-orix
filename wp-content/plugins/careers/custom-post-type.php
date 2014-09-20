@@ -41,7 +41,7 @@ function register_cpt_career() {
         'show_ui' => true,
         'show_in_menu' => true,
         'menu_position' => 5,
-        'menu_icon' => 'dashicons-businessman',
+        'menu_icon' => 'dashicons-nametag',
         'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,

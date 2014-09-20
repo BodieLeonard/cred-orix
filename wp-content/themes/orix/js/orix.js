@@ -27,7 +27,7 @@
 	// setup ui
 	Orix.fn.setupUi = function () {
 		// setup parallax
-		$('.home .hero').parallax("center", 0.3);
+		$('.hero').parallax("center", 0.3);
 		$('.hero-article').animate({
 			"opacity": 1
 		}, 900)

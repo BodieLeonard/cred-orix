@@ -12,6 +12,7 @@
 
 	<?php
 		$excerpt = get_the_excerpt();
+
 		$dealCta = DealCTA::create([
 			"thumbnail"=> get_the_post_thumbnail(),
 			"headline"=>get_the_title(),

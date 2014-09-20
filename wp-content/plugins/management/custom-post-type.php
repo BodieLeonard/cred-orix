@@ -40,7 +40,7 @@ function register_cpt_management() {
         'show_ui' => true,
         'show_in_menu' => true,
         'menu_position' => 5,
-        'menu_icon' => 'dashicons-groups',
+        'menu_icon' => 'dashicons-universal-access',
         'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,

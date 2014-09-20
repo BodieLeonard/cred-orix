@@ -53,10 +53,10 @@ get_header(); ?>
 				<article class="full col-md-8 simple">
 					
 					<?php the_content()?>
-					<!--<a href="<?php #echo $backLink; ?>" class="button basic">Back To Leadership</a>-->
-					<?php #if (!empty($qstring)) : ?>
-						<!-- <a href="/<?php #echo $qstring ; ?>" class="button basic">Back To <?php #echo $managementCatName; ?></a> -->
-					<?php #endif; ?>
+					<!--<a href="<?php echo $backLink; ?>" class="button basic">Back To Leadership</a>
+					<?php if (!empty($qstring)) : ?>
+						<a href="/<?php echo $qstring ; ?>" class="button basic">Back To <?php echo $managementCatName; ?></a>
+					<?php endif; ?>
 				</article>
 			
 

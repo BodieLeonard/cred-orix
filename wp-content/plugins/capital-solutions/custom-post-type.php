@@ -40,7 +40,7 @@ function register_cpt_capital_solutions() {
         'show_ui' => true,
         'show_in_menu' => true,
         'menu_position' => 5,
-        'menu_icon' => 'dashicons-chart-bar',
+        'menu_icon' => 'dashicons-media-document',
         'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
