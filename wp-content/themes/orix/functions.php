@@ -5,6 +5,7 @@
  * @package Orix
  */
 
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
@@ -114,12 +115,15 @@ add_action( 'wp_enqueue_scripts', 'orix_scripts' );
 /**
 *	Limit the character count on excerpts
 */
-function string_limit_words($string, $word_limit) {
+function string_limit_words($string, $word_limit, $elips = true) {
 
   $words = explode(' ', $string, ($word_limit + 1));
   if(count($words) > $word_limit)
   array_pop($words);
-  return implode(' ', $words) . "...";
+	if($elips) {
+		$showElips = "...";
+	}
+  return implode(' ', $words) . $showElips;
 }
 
 /**
@@ -148,6 +152,24 @@ if (class_exists('MultiPostThumbnails')) {
 		'label' => 'Secondary Image',
 		'id' => 'secondary-image',
 		'post_type' => 'capitalsolution'
+ 	));
+
+ 	new MultiPostThumbnails(array(
+		'label' => 'Secondary Image',
+		'id' => 'secondary-image',
+		'post_type' => 'page'
+ 	));
+
+ 	new MultiPostThumbnails(array(
+		'label' => 'Secondary Image',
+		'id' => 'secondary-image',
+		'post_type' => 'career'
+ 	));
+
+ 	new MultiPostThumbnails(array(
+		'label' => 'Secondary Image',
+		'id' => 'secondary-image',
+		'post_type' => 'firm'
  	));
  }
 

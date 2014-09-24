@@ -1,3 +1,41 @@
+var getAgent = function() {
+
+  var agent = navigator.userAgent.toLowerCase(),
+    obj = {
+      viewport:
+      {
+        is:
+        {
+          ie10    : !!(agent.match(/msie 10.0/)),
+          ie9     : !!(agent.match(/msie 9.0/)),
+          ie8     : !!(agent.match(/msie 8.0/)),
+          ie7     : !!(agent.match(/msie 7.0/)),
+          ie6     : !!(agent.match(/msie 6.0/)),
+          opera     : !!(agent.match(/opera/)),
+          chrome  : !!(agent.match(/chrome/)),
+          safari  : !!(agent.match(/safari/)),
+          firefox : !!(agent.match(/firefox/)),
+          android	: !!(agent.match(/android/)),
+          iOS		: !!(agent.match(/iphone/) || agent.match(/ipod/))
+        }
+      }
+    };
+
+  for (var key in obj.viewport) {
+    var o = obj.viewport[key];
+    for (var prop in o) {
+      if(o[prop])
+        agent = prop;
+    };
+  };
+
+  return agent;
+};
+
+
+
+
+
 // wait for jquery to laod
 (function ($) {
 	/**
@@ -27,11 +65,14 @@
 	// setup ui
 	Orix.fn.setupUi = function () {
 		// setup parallax
-		$('.hero').parallax("center", 0.3);
+		if(getAgent() != "iOS" && getAgent() != "android") {
+			$('.hero').parallax("center", 0.3);
+			
+			$('.hero-article').parallax("center", 1.5, null, true);
+		}
 		$('.hero-article').animate({
-			"opacity": 1
-		}, 900)
-		$('.hero-article').parallax("center", 1.5, null, true);
+				"opacity": 1
+			}, 900)
 	};
 
 	// hide home link
@@ -114,6 +155,14 @@
 			function () {
 				// check sticky header
 				Orix.fn.stickyHeader();
+
+				/*if($('.hero-article')) {
+					if($(window).scrollTop() <= 100) {
+						if($('.hero-article').offset().top <= 0) {
+							('.hero-article').css("top","5%");
+						}
+					}
+				}*/
 			},
 			100
 		)
@@ -149,3 +198,9 @@
 
 	// end jquery 
 })(jQuery);
+
+
+
+
+
+

@@ -16,7 +16,7 @@
 			$args = array( 'post_type' => 'career', 'post__not_in' => array( 151 ));
 			$loop = new WP_Query( $args );
 			while ( $loop->have_posts() ) : $loop->the_post();
-			    echo '<li><a href="/'.$post->post_name.'">'.$post->post_name.'</a></li>';
+			    echo '<li><a href="/'.$post->post_name.'">'.$post->post_title.'</a></li>';
 			endwhile;
 		?>		
 	</ul>

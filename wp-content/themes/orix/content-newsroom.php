@@ -43,7 +43,7 @@ if ($postsCount >=1) {
 	  	"thumbnail"=> get_the_post_thumbnail(),
 	  	"headline"=>string_limit_words($headline,8),
 	  	"date"=>$post->post_date,
-	  	"excerpt"=> string_limit_words($excerpt,25),
+	  	"excerpt"=> string_limit_words($excerpt,23),
 	  	"link"=>$post->guid."&filter=".$pageSlug
 	  ]);
 
@@ -68,9 +68,9 @@ if ($postsCount >=1) {
 
 		  $articleCta = ArticleCTA::create([
 		  	"thumbnail"=> get_the_post_thumbnail(),
-		  	"headline"=>$post->post_title,
+		  	"headline"=>string_limit_words($post->post_title,8),
 		  	"date"=>$post->post_date,
-		  	"excerpt"=> string_limit_words($excerpt,25),
+		  	"excerpt"=> string_limit_words($excerpt,23),
 		  	"link"=>$post->guid."&filter=".$pageSlug
 		  ]);
 

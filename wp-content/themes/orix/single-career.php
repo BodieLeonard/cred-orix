@@ -16,7 +16,12 @@ Template Name: Careers
 
 get_header(); ?>
 
-	<div class="hero short" style="background-image: url(<?php echo get_template_directory_uri() . '/fpo/hero-careers.jpg' ?>) "></div>
+	<?php
+	$secondThumb = MultiPostThumbnails::get_post_thumbnail_url( 'career', 'secondary-image', $post->ID	);
+	
+	$pageID = $post->ID;
+	?>
+	<div class="hero short" style="background-image: url(<?php echo $secondThumb; ?>) "></div>
 
 	<div id="content" class="site-content">
 

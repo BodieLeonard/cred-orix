@@ -16,7 +16,15 @@ Template Name: Proven Success
 
 get_header(); ?>
 
-	<div class="hero short" style="background-image: url(<?php echo get_template_directory_uri() . '/fpo/hero-proven-success.jpg' ?>) ">
+	<?php
+	$post_home = get_post(3643);
+	$secondThumb = MultiPostThumbnails::get_post_thumbnail_url( 'page', 'secondary-image', $post_home->ID	);
+	$isMainPage = true;
+	$isSubPage = false;
+	$isCapitalSolutionsMainPage = false;
+	$pageID = $post->ID;
+	?>
+	<div class="hero short" style="background-image: url(<?php echo $secondThumb; ?>) "></div>
 		
 	</div>
 

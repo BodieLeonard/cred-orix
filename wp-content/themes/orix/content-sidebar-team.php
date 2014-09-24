@@ -89,12 +89,12 @@ if (count($term_object_ids) > 0 && !$hasGroups) :
 							$email = get_post_meta($post_id_of_manager, 'email', true);
 
 							echo "<li class='team id-".$post->ID."''>";
-							echo "<a href='/".$slug."?filter=".$managementCatSlug."'><p>";
+							echo "<p><a href='/".$slug."?filter=".$managementCatSlug."'>";
 							echo "<strong>".$name."</strong>";
 							echo "<em>".$title."</em>";
 							echo "<a class='phone' href='tel:+".$phone."'>".$phone."</a>";
-							echo "<a class='email' href='mailto:".$email."'>".$email."</a>";
-							echo "</p></a>";
+							#echo "<a class='email' href='mailto:".$email."'>".$email."</a>";
+							echo "</a></p>";
 							echo "</li>";
 
 						}

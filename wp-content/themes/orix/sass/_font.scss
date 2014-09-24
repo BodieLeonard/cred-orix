@@ -38,6 +38,7 @@
 	"merriweather/merriweather-italic.eot"
 );
 
+
 @include font-face(
 	"GothamLight", 
 	font-files("gotham/gothamhtf-xlight.woff", 
@@ -76,31 +77,81 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-uniE629:before, .icon-dollar:before {
+.icon-dollar:before {
 	content: "\e629";
-}
-.icon-pencil:before {
-	content: "\e601";
-}
-.icon-house:before {
-	content: "\e600";
-}
-.icon-link:before {
-	content: "\e602";
-}
-.icon-tools:before {
-	content: "\e603";
-}
-.icon-database:before {
-	content: "\e604";
-}
-.icon-graph:before {
-	content: "\e627";
 }
 .icon-lock:before {
 	content: "\e628";
 }
-
+.icon-graph:before {
+	content: "\e627";
+}
+.icon-database:before {
+	content: "\e610";
+}
+.icon-tools:before {
+	content: "\e611";
+}
+.icon-link:before {
+	content: "\e612";
+}
+.icon-pencil:before {
+	content: "\e613";
+}
+.icon-house:before {
+	content: "\e614";
+}
+.icon-wind:before {
+	content: "\e60d";
+}
+.icon-house2:before {
+	content: "\e604";
+}
+.icon-house3:before {
+	content: "\e606";
+}
+.icon-office:before {
+	content: "\e607";
+}
+.icon-pencil2:before {
+	content: "\e60e";
+}
+.icon-library:before {
+	content: "\e608";
+}
+.icon-users:before {
+	content: "\e60f";
+}
+.icon-aid:before {
+	content: "\e603";
+}
+.icon-fire:before {
+	content: "\e60a";
+}
+.icon-airplane:before {
+	content: "\e609";
+}
+.icon-truck:before {
+	content: "\e60b";
+}
+.icon-users2:before {
+	content: "\e601";
+}
+.icon-graduation:before {
+	content: "\e600";
+}
+.icon-airplane2:before {
+	content: "\e605";
+}
+.icon-cone:before {
+	content: "\e602";
+}
+.icon-pie:before {
+	content: "\e60c";
+}
+.icon-profiledefault:before {
+	content: "\e615";
+}
 
 body {
 	font-family:"MerriweatherReg";

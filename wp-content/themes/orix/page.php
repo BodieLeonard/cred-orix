@@ -11,8 +11,25 @@
  */
 
 get_header(); ?>
+	<?php
+	if(!empty(wp_get_attachment_image_src( get_post_thumbnail_id(), 'full')[0])) :
 
-	<div class="hero short" style="background-image: url(<?php echo wp_get_attachment_image_src( get_post_thumbnail_id(), 'full')[0] ?>) ">
+	?><div class="hero short" style="background-image: url(<?php echo wp_get_attachment_image_src( get_post_thumbnail_id(), 'full')[0] ?>) ">
+	
+	<?php else : ?>
+	
+		<?php
+		$post_home = get_post(3652);
+		$secondThumb = MultiPostThumbnails::get_post_thumbnail_url( 'page', 'secondary-image', $post_home->ID	);
+		$isMainPage = true;
+		$isSubPage = false;
+		$isCapitalSolutionsMainPage = false;
+		$pageID = $post->ID;
+		?>
+		<div class="hero short" style="background-image: url(<?php echo $secondThumb; ?>) "></div>
+
+	<?php endif; ?>
+	
 		
 	</div>
 

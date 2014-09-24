@@ -16,7 +16,12 @@ Template Name: Careers
 
 get_header(); ?>
 
-	<div class="hero short" style="background-image: url(<?php echo get_template_directory_uri() . '/fpo/hero-careers.jpg' ?>) "></div>
+	<?php
+	
+	$secondThumb = MultiPostThumbnails::get_post_thumbnail_url( 'firm', 'secondary-image', $post->ID	);
+	
+	?>
+	<div class="hero short" style="background-image: url(<?php echo $secondThumb; ?>) "></div>
 
 	<div id="content" class="site-content">
 
@@ -29,8 +34,23 @@ get_header(); ?>
 					<h1><?php the_title(); ?></h1>
 					<p><?php echo get_post_meta($post->ID, 'headline', true); ?></p>
 				</section>
+			
+				<?php
 
-				<article class="full col-xs-12 col-md-9 simple">
+				$colNum = 12;
+				
+
+
+				$term_id = $wpdb->get_row("SELECT term_id FROM wp_terms WHERE slug = 'management-$post->post_name'")->term_id;
+				$term_taxonomy_id = $wpdb->get_row("SELECT term_taxonomy_id FROM wp_term_taxonomy WHERE term_id = '$term_id'")->term_taxonomy_id;
+				$relations = "SELECT * FROM wp_term_relationships WHERE term_taxonomy_id = '$term_taxonomy_id'";
+				$term_object_ids = $wpdb->get_results($relations);
+				
+				if (count($term_object_ids) > 0 ) {
+					$colNum = 9;
+				}
+				?>
+				<article class="full col-xs-12 col-md-<?php echo $colNum; ?> simple">
 					<?php the_content()?>
 				</article>
 
@@ -47,9 +67,11 @@ get_header(); ?>
 			<div class="col-xs-12 col-md-3">	
 			 <?php
 
+
 			 if(empty($teamLink)) {
 			 	
-			 	$children = wp_list_pages('title_li=&child_of='.$sidebar_pid.'&post_type=capitalsolution&echo=0');
+			 	
+
 			 	if(!$isCapitalSolutionsMainPage) {
 			 		get_template_part( 'content', 'sidebar-team' );
 			 	};

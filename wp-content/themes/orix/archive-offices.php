@@ -11,12 +11,20 @@
  */
 
 /*
-Template name: Management
+Template name: Offices
 */
 
 get_header(); ?>
 
-	<div class="hero short" style="background-image: url(<?php echo get_template_directory_uri() . '/fpo/hero-careers.jpg' ?>) "></div>
+	<?php
+	$post_home = get_post(3645);
+	$secondThumb = MultiPostThumbnails::get_post_thumbnail_url( 'page', 'secondary-image', $post_home->ID	);
+	$isMainPage = true;
+	$isSubPage = false;
+	$isCapitalSolutionsMainPage = false;
+	$pageID = $post->ID;
+	?>
+	<div class="hero short" style="background-image: url(<?php echo $secondThumb; ?>) "></div>
 
 	<div id="content" class="site-content">
 
@@ -25,49 +33,13 @@ get_header(); ?>
 		
 		<section class='centered'>
 			<h1>Our Offices</h1>
-			
 		</section>
-
-		<?php 
-		/*$qstring = $_REQUEST['filter'];
-		if(!empty($qstring)) {
-			$appendFilter = "/?filter=" . $qstring;
-			$filter = 'offices-'.$_REQUEST['filter'];
-			query_posts(array( 'post_type' => 'offices', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'menu_order', 'order' => 'ASC', "officescategory"=>$filter)); 
-		} else {
-			query_posts(array( 'post_type' => 'offices', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'menu_order', 'order' => 'ASC')); 
-		}
-		while (have_posts()) : the_post(); */?>
-		
-		<?php
-			/*$address = get_post_meta($post->ID, 'address', true);
-			$city = get_post_meta($post->ID, 'city', true);
-			$state = get_post_meta($post->ID, 'state', true);
-			$zip = get_post_meta($post->ID, 'zip', true);
-			$phone = get_post_meta($post->ID, 'phone', true);
-			$name = get_the_title();
-
-			$officeCta = OfficeCTA::create([
-				"thumbnail"=> "",
-				"name"=>$name,
-				"address"=>$address,
-				"city"=>$city,
-				"state"=>$state,
-				"zip"=>$zip,
-				"phone"=>$phone
-				
-			]);*/
-		?>
-
-		<?php #endwhile; ?>
-			
-
 					
 <?php 
 
 	$post_type = 'offices';
 	$tax = 'officescategory';
-	$tax_terms = get_terms($tax,'hide_empty=0');
+	$tax_terms = get_terms($tax,'orderby=ID&hide_empty=0');
 
 	//list everything
 	if ($tax_terms) {
@@ -77,7 +49,8 @@ get_header(); ?>
 	      "$tax" => $tax_term->slug,
 	      'post_status' => 'publish',
 	      'posts_per_page' => -1,
-	      'caller_get_posts'=> 1
+	      'caller_get_posts'=> 1,
+	      'orderby'=> 'menu_order', 'order' => 'ASC'
 	    );
 
 	    $my_query = null;

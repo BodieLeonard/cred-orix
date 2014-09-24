@@ -53,7 +53,7 @@ get_header(); ?>
 
 
 					
-				<div class='holder-bullets row'>	
+				<div class='no-link holder-bullets row'>	
 				<?php
 	  			query_posts( array( 'post_type' => 'homepagecta', 'homepagectacategory' => 'homepage-cta-item', 'orderby'=>'menu_order','order'=>'asc' ) );
 		  		if ( have_posts() ) : while ( have_posts() ) : the_post();

@@ -114,7 +114,7 @@ get_header(); ?>
 									$bulletCta = BulletCTA::create([
 										"icomoon"=> "icon-".get_post_meta($post->ID, 'icon', true),
 										"headline"=>get_the_title(),
-										"excerpt"=> string_limit_words($excerpt,25),
+										"excerpt"=> string_limit_words($excerpt,24),
 										"link"=> $post->post_name
 									]);
 								?>
@@ -124,11 +124,19 @@ get_header(); ?>
 		
 					<?php else : ?>
 						<?php
-							if($isSubPage) {
+
+							$term_id = $wpdb->get_row("SELECT term_id FROM wp_terms WHERE slug = 'management-$post->post_name'")->term_id;
+							$term_taxonomy_id = $wpdb->get_row("SELECT term_taxonomy_id FROM wp_term_taxonomy WHERE term_id = '$term_id'")->term_taxonomy_id;
+							$relations = "SELECT * FROM wp_term_relationships WHERE term_taxonomy_id = '$term_taxonomy_id'";
+							$term_object_ids = $wpdb->get_results($relations);
+
+							if (count($term_object_ids) > 0 && $isSubPage) {
 								$colCenterWidth = 6;
 							} else {
 								$colCenterWidth = 9;
 							}
+
+							
 						?>
 						<article class="full col-xs-12 simple col-md-<?php echo $colCenterWidth; ?>">
 							<?php  the_content() ?>

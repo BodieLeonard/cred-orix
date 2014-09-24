@@ -29,6 +29,7 @@
 		img{
 			left:0;
 			margin-left:0;
+			max-width: 210px;
 		}
 		h1{
 
@@ -43,6 +44,10 @@
 		margin-bottom:20px;
 		font-size: 13px;
 		line-height: 25px;
+		
+		ul ul {
+			margin-bottom:0px;
+		}
 
 		p {
 			font-size: 13px;
@@ -83,6 +88,7 @@
 		font-size:13px;
 		margin-bottom:0px;
 		line-height:25px;
+		min-height:120px;
 	}
 
 	.button {
@@ -131,6 +137,7 @@
 			height:273px;
 			margin-bottom:30px;
 			background:$gray-lighter;
+			overflow:hidden;
 
 			img{
 				left:0;
@@ -152,7 +159,8 @@
 		}
 		blockquote {
 			height: 90px;
-			margin: auto 50px;
+			margin: auto 35px;
+			
 		}
 	}
 
@@ -232,6 +240,7 @@ ul ul li{ text-indent:-5px; list-style: none;}
 			font-family:"BrandonMed";
 			letter-spacing: 2px;
 			font-size: 18px;
+			margin-top: 20px;
 		}
 		.button, .button.basic {
 			
@@ -245,6 +254,9 @@ body #content {
 		hr {
 			margin-bottom:40px;
 		}
+		&.site-main {
+			margin-top:20px;
+		}
 		article {
 		date {
 			font-family:"BrandonLight";
@@ -254,7 +266,7 @@ body #content {
 			h1 {
 				text-transform: none;
 				font-weight:400;
-				font-size:15px;
+				font-size:13px;
 				letter-spacing:.25px;
 
 				

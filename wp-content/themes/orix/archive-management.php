@@ -16,17 +16,20 @@ Template name: Management
 
 get_header(); ?>
 
-	<div class="hero short" style="background-image: url(<?php echo get_template_directory_uri() . '/fpo/hero-careers.jpg' ?>) "></div>
+	<?php
+	$post_home = get_post(3652);
+	$secondThumb = MultiPostThumbnails::get_post_thumbnail_url( 'page', 'secondary-image', $post_home->ID	);
+	?>
+	<div class="hero short" style="background-image: url(<?php echo $secondThumb; ?>) "></div>
 
 	<div id="content" class="site-content">
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 		
-		<section class='centered'>
-			<h1>Our Team</h1>
-			
-		</section>
+		<?php
+		
+		?>
 
 		<?php 
 		$qstring = $_REQUEST['filter'];
@@ -34,13 +37,25 @@ get_header(); ?>
 			$appendFilter = "/?filter=" . $qstring;
 			$filter = 'management-'.$_REQUEST['filter'];
 			query_posts(array( 'post_type' => 'management', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'menu_order', 'order' => 'ASC', "managemenmcategory"=>$filter)); 
+			
+			$term = get_term_by('slug', $filter, 'managemenmcategory'); 
+			$title = $term->name; 
+
+
+			
 		} else {
+			$title="Our Team";
 			query_posts(array( 'post_type' => 'management', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'menu_order', 'order' => 'ASC')); 
 		}
-		while (have_posts()) : the_post(); ?>
+
+		?>
+		<section class='centered'>
+			<h1><?php echo $title; ?></h1>
+		</section>
+
+		<?php while (have_posts()) : the_post(); ?>
 		
 		<?php
-
 
 			$excerpt = get_the_excerpt();
 			$ManagementCta = ManagementCTA::create([
@@ -48,7 +63,8 @@ get_header(); ?>
 				"headline"=>get_the_title(),
 				#"excerpt"=> string_limit_words($excerpt,25),
 				"title"=> get_post_meta($post->ID, 'title', true),
-				"link"=> $post->post_name. $appendFilter
+				"link"=> $post->post_name. $appendFilter,
+				"department"=>get_post_meta($post->ID, 'department', true)
 			]);
 		?>
 		<?php endwhile; ?>

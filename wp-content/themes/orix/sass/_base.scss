@@ -51,20 +51,13 @@ html body a:hover {
 .bridge-outline{
 	display:none;
 }
-@media (min-width:900px) {
 
-	.bridge-outline {
-		width: 1466px;
-		height:270px;
-		background-size: contain;
-		background-repeat:no-repeat;
-		background-position:top center;
-		left: -140px;
-		position: relative;
-		margin-bottom:40px;
-		display:block;
-	}
+button {
+	border-radius:0;
+	box-shadow:none;
+	text-shadow:none;
 }
+
 
 body #content hr {
 	border-bottom: 1px solid white !important;
@@ -75,7 +68,7 @@ body #content hr {
 .content-area .bullet {
 	h1 {
 		text-align: center;
-		height: 40px;
+		height: 20px;
 		font-weight: normal;
 		font-family: "BrandonMed";
 		font-size: 15px;
@@ -86,14 +79,15 @@ body #content hr {
 	}
 	.diamond {
 		background:url('images/diamond-red.png') top center no-repeat;
-		padding: 14px;
+		padding: 15px;
 		
 		display:block;
 		text-align:center;
 		margin-bottom:25px;
 	}
-	a, a:hover {
+	a, a:hover, a:visited {
 		text-decoration:none;
+		color:$black;
 	}
 }
 
@@ -117,7 +111,7 @@ section {
 	&.centered {
 		text-align:center;
 		margin-bottom:50px;
-		padding:0 60px;
+		padding:0 20px;
 
 
 		h1 {
@@ -128,9 +122,11 @@ section {
 			letter-spacing: 6px;
 		}
 		p {
-			font-size: 17px;
-			font-family: "Merriweather";
+			font-size: 14px;
+			font-family: "MerriweatherReg";
 			margin-bottom: 5px;
+			line-height:25px;
+			orphans: 3;
 		}
 	}
 

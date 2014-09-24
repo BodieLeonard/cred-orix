@@ -17,8 +17,8 @@ Template name: Our Firm
 get_header(); ?>
 	
 	<?php
-	$post_home = get_post(3637);
-	$secondThumb = MultiPostThumbnails::get_post_thumbnail_url( 'page', 'secondary-image', $post_home->ID	);
+	//$secondThumb = MultiPostThumbnails::get_the_post_thumbnail(get_post_type(), 'secondary-image');
+	$secondThumb = MultiPostThumbnails::get_post_thumbnail_url( get_post_type(), 'secondary-image', $post_id	);
 	$isMainPage = true;
 	$isSubPage = false;
 	$isCapitalSolutionsMainPage = false;

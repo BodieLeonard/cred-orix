@@ -9,11 +9,19 @@
  *
  * @package Orix
  */
+/*
+Template name: News
+*/
 
 
 get_header(); ?>
 
-	<div class="hero short" style="background-image: url(<?php echo get_template_directory_uri() . '/fpo/hero-careers.jpg' ?>) "></div>
+	<?php
+	$post_home = get_post(3754);
+	$secondThumb = MultiPostThumbnails::get_post_thumbnail_url( 'page', 'secondary-image', $post_home->ID	);
+	$pageID = $post->ID;
+	?>
+	<div class="hero short" style="background-image: url(<?php echo $secondThumb; ?>) "></div>
 
 	<div id="content" class="site-content">
 

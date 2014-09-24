@@ -8,7 +8,7 @@
 	
 
 	.hero-article {
-		position: absolute;
+		position: relative;
 		z-index: 200;
 		top:5%;
 		width: 100%;
@@ -22,6 +22,8 @@
 		letter-spacing: 1px;
 		display:block;
 		opacity:0;
+		max-width:1200px;
+		margin:0 auto;
 		
 
 
