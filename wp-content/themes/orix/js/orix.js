@@ -66,7 +66,7 @@ var getAgent = function() {
 	Orix.fn.setupUi = function () {
 		// setup parallax
 		if(getAgent() != "iOS" && getAgent() != "android") {
-			$('.hero').parallax("center", 0.3);
+			$('.home .hero').parallax("center", 0.3);
 			
 			$('.hero-article').parallax("center", 1.5, null, true);
 		}
