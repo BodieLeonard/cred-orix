@@ -38,7 +38,8 @@ $title = str_replace("-", " ", $filter);
 		
 		<?php 
 
-			echo '<li><a href="/'.date("Y").'/news/">All ORIX News</a></li>';
+			//echo '<li><a href="/'.date("Y").'/news/">All ORIX News</a></li>';
+			echo '<li><a href="/news/">All ORIX News</a></li>';
 			#$args = array( 'post_type' => 'news', 'title_li' => null);
 			$args = array(
 				'type'            => 'yearly',
@@ -57,7 +58,8 @@ $title = str_replace("-", " ", $filter);
 			if(empty($qstring)) {
 				wp_get_archives_cpt($args);
 			} else {
-				echo '<li><p style="color: #73767A; font-size: 13px;">All '.$title.' News</p></li>';
+				//echo '<li><p style="color: #73767A; font-size: 13px;">All '.$title.' News</p></li>';
+				echo '<li><a href="/news/?filter='.$qstring.'">All '.$title.' News</a></li>';
 			}
 			/*$args = array( 'post_type' => 'news', 'posts_per_page' => 10 );
 			$loop = new WP_Query( $args );

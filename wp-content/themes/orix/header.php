@@ -52,6 +52,7 @@
 			<ul id="menu-main-menu" class="menu nav-menu mobile-menu">
 				<li id="menu-item-3488" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3488"><a href="/firm/">Our Firm</a></li>
 				<li id="menu-item-3164" class="menu-item menu-item-type-post_type menu-item-object-capitalsolution menu-item-has-children menu-item-3164"><a href="/capital-solution/corporate-capital/">Corporate Capital</a></li>
+				<li id="menu-item-3164" class="menu-item menu-item-type-post_type menu-item-object-capitalsolution menu-item-has-children menu-item-3164"><a href="/capital-solution/real-estate/">Real Estate</a></li>
 				<li id="menu-item-3167" class="menu-item menu-item-type-post_type menu-item-object-capitalsolution menu-item-has-children menu-item-3167"><a href="/capital-solution/municipal-finance/">Municipal Finance</a></li>
 				<li id="menu-item-3163" class="menu-item menu-item-type-post_type menu-item-object-capitalsolution menu-item-3163"><a href="/capital-solution/asset-management/">Asset Management</a></li>
 				<li id="menu-item-3165" class="menu-item menu-item-type-post_type menu-item-object-capitalsolution menu-item-3165"><a href="/capital-solution/energy/">Energy</a></li>

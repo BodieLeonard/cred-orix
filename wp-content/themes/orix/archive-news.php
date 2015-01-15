@@ -25,9 +25,26 @@ get_header(); ?>
 	$filter = (isset($_REQUEST['filter'])) ? $_REQUEST['filter'] : "ORIX";
 	$title = str_replace("-", " ", $filter);
 
+	// check to see if year is in the url
+	$path = $_SERVER['REQUEST_URI']; 
+	$folders = explode('/', $path);
+	$hasYear = ($folders[1] == 'news') ? false : true;
+
 	if(isset($_REQUEST['filter'])){
-		$posts = query_posts(array( 'year'=>get_the_time('Y'), 'post_type' => 'news', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'date', 'order' => 'DEC', "newsscategory"=>$taxonomy)); 
+
+		if($hasYear){
+			$posts = query_posts(array( 'year'=>get_the_time('Y'), 'post_type' => 'news', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'date', 'order' => 'DEC', "newsscategory"=>$taxonomy)); 
+		} else {
+			$posts = query_posts(array(  'post_type' => 'news', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'date', 'order' => 'DEC', "newsscategory"=>$taxonomy)); 
+		};
+		
+
 	} else {
+		if($hasYear){
+		}else {
+			$posts = query_posts(array(  'post_type' => 'news', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'date', 'order' => 'DEC')); 
+		}
+		
 	};
 	?>
 	<?php getHero($secondThumb); ?>

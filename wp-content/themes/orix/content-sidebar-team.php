@@ -140,6 +140,9 @@ elseif(count($term_object_ids)) :
 			<li>
 				<p>Our Team</p>
 			</li>
+			<?php if($managementCatSlug == 'municipal-finance') : ?>
+				<li><a href="/management/?filter=municipal-finance"><strong>Municipal Finance Team</strong></a> </li>
+			<?php endif; ?>
 		<?php
 			$i = 0;
 			foreach ( $termchildren as $child ) {
@@ -163,3 +166,6 @@ elseif(count($term_object_ids)) :
 endif;
 
 ?>
+
+
+
