@@ -96,14 +96,18 @@ function orix_scripts() {
 	wp_enqueue_style( 'orix-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'jQuery', get_template_directory_uri() . '/js/jquery-1.11.1.min.js', array(), '20120206', true );
-	wp_enqueue_script( 'twitterBootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js', array(), '20120206', true );
+	wp_enqueue_script( 'twitterBootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '20120206', true );
 	wp_enqueue_script( 'orix-navigation', get_template_directory_uri() . '/js/navigation.js', array('jQuery'), '20120206', true );
 	wp_enqueue_script( 'parallax', get_template_directory_uri() . '/js/jquery.parallax-1.1.3.js', array('jQuery'), '20140721', true );
+	wp_enqueue_script( 'printjs', get_template_directory_uri() . '/js/html2canvas.min.js', array('jQuery'), '20141023', true );
 	
-	wp_enqueue_script( 'orix-app', get_template_directory_uri() . '/js/orix.js', array('jQuery'), '20140715', true );
+	
 
 	wp_enqueue_script( 'orix-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array('jQuery'), '20130115', true );
-
+	wp_enqueue_script( 'match-height', get_template_directory_uri() . '/js/jquery.matchHeight.js', array('jQuery'), '20130115', true );
+	
+	wp_enqueue_script( 'orix-app', get_template_directory_uri() . '/js/orix.js', array('match-height'), '20140715', true );
+	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -132,14 +136,51 @@ function string_limit_words($string, $word_limit, $elips = true) {
 function custom_login_css() {
 	echo '<link rel="stylesheet" media="screen" type="text/css" href="'.get_stylesheet_directory_uri().'/style.css" >';
 }
-add_action('login_head', 'custom_login_css');
+//add_action('login_head', 'custom_login_css');
 
 /**
 * Remove menu items in admin
 */
 function remove_menus(){
   
-  remove_menu_page( 'edit-comments.php' );                  //Dashboard
+   	$current_user = wp_get_current_user();
+
+  	$user_roles = $current_user->roles;
+	$user_role = array_shift($user_roles);
+
+	if ($user_role == 'administrator') {
+		
+	} elseif ($user_role == 'editor') {
+		
+	} elseif ($user_role == 'author') {
+		
+	} elseif ($user_role == 'contributor' || $user_role == 'revisor') {
+
+		remove_menu_page( 'index.php' );                  //Dashboard
+		remove_menu_page( 'edit.php' );                   //Posts
+		remove_menu_page( 'upload.php' );                 //Media
+		remove_menu_page( 'edit.php?post_type=page' );    //Pages
+		remove_menu_page( 'edit-comments.php' );          //Comments
+		remove_menu_page( 'themes.php' );                 //Appearance
+		remove_menu_page( 'plugins.php' );                //Plugins
+		remove_menu_page( 'users.php' );                  //Users
+		remove_menu_page( 'tools.php' );                  //Tools
+		remove_menu_page( 'options-general.php' );        //Settings
+		remove_menu_page( 'edit.php?post_type=capitalsolution' );
+		remove_menu_page( 'edit.php?post_type=career' );
+		remove_menu_page( 'edit.php?post_type=homepagecta' );
+		//remove_menu_page( 'edit.php?post_type=management' );
+		remove_menu_page( 'edit.php?post_type=offices' );
+		remove_menu_page( 'edit.php?post_type=firm' );
+		remove_menu_page( 'admin.php?page=wpcf7' );
+
+		//remove_menu_page( 'edit.php?post_type=provensuccess' );
+	
+	} elseif ($user_role == 'subscriber') {
+		
+	} else {
+		
+	};
   
 }
 add_action( 'admin_menu', 'remove_menus' );
@@ -220,6 +261,15 @@ function custom_upload_mimes ( $existing_mimes=array() ) {
 	$existing_mimes['vcf'] = 'text/x-vcard';
 	return $existing_mimes;
 }
+
+/**
+*
+*/
+function getHero($thumb) {
+	//<div class="hero short" style="background-image: url(<?php #echo $secondThumb; #) "></div>
+	echo '<img style="margin-bottom:40px; "src="'.$thumb.'">';
+}
+
 /**
  * Implement the Custom Header feature.
  */

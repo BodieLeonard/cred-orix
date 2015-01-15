@@ -199,20 +199,25 @@
 			margin:0;
 			text-align:left;
 			margin-bottom:15px;
+
 		}
 
 		.thumb {
 			min-height: 190px;
 			max-width: 270px;
-
+			position:relative;
 			margin-bottom:17px;
-			background:#dedede;
+			
 
 			img {
 				position: inherit;
 				left: 0;
 				margin-bottom:0;
 				margin-left: 0;
+				position:absolute;
+			    top:0;
+			    bottom:0;
+			    margin:auto;
 			}
 		}
 		.button {
@@ -259,9 +264,9 @@ body #content {
 		}
 		article {
 		date {
-			font-family:"BrandonLight";
 			margin-bottom:0px;
-			font-size:13px;
+			font-family: "BrandonMed";
+			font-size:16px;
 		}
 			h1 {
 				text-transform: none;
@@ -274,6 +279,7 @@ body #content {
 				a, a:visited {
 					font-weight:400;
 					text-decoration:none;
+					font-size:14px;
 				}
 			}
 		}

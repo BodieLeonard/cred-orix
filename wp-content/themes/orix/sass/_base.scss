@@ -28,6 +28,17 @@ body {
 	}
 }
 
+
+.site-content .content-area article.full p img {
+	position: relative;
+	left: 0; 
+	margin-left: 0; 
+	margin-bottom: 0; 
+}
+.top-padding {
+	padding-top:100px;
+}
+
 html body a {
 	color:$gray-darker;
 	font-weight:bold;
@@ -61,7 +72,7 @@ button {
 
 body #content hr {
 	border-bottom: 1px solid white !important;
-	margin-bottom: 80px;
+	margin-bottom: 60px;
 	clear: both;
 }
 

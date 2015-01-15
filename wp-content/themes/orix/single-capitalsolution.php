@@ -10,6 +10,8 @@
  * @package Orix
  */
 
+global $onCapitalSolutions;
+$onCapitalSolutions = true;
 get_header(); ?>
 	
 	<?php
@@ -20,7 +22,8 @@ get_header(); ?>
 	$isCapitalSolutionsMainPage = false;
 	$pageID = $post->ID;
 	?>
-	<div class="hero short" style="background-image: url(<?php echo $secondThumb; ?>) "></div>
+	
+	<?php getHero($secondThumb); ?>
 
 	<div id="content" class="site-content">
 
@@ -79,14 +82,13 @@ get_header(); ?>
 
 					if($isSubPage) {
 						echo "<div class='col-xs-12 col-md-3'>";
-							
-							get_template_part( 'content', 'sidebar-capital-solutions' ); 
-						
 
 							$showTransactions = get_post_meta($pageID, 'show_transactions', true);
 					 		if($showTransactions){
 					 			get_template_part( 'content', 'sidebar-proven-success-link' ); 
 					 		}
+
+					 		get_template_part( 'content', 'sidebar-capital-solutions' ); 
 					 	echo "</div>";
 					};
 					?>

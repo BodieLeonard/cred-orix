@@ -5,7 +5,7 @@
  * @package Orix
  */
 ?>
-<section class='centered'>
+<section class='centered full col-xs-13 col-md-9 simple'>
 	<?php 
 		
 		$title = $post->post_title;
