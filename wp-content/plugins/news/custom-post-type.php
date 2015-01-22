@@ -49,6 +49,7 @@ function register_cpt_news() {
         'can_export' => true,
         'rewrite' => false,
         'capability_type' => 'edit_posts'
+
     );
 
     register_post_type( $PLUGIN_NAME_SINGULAR_LOWER, $args );
