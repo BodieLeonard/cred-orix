@@ -17,21 +17,17 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'Orix_prod');
-
-/** MySQL database username */
-define('DB_USER', 'root');
-
-/** MySQL database password */
-define('DB_PASSWORD', 'password');
-
-/** MySQL hostname */
-define('DB_HOST', '127.0.0.1');
-
-/** Database Charset to use in creating database tables. */
+//define('DB_NAME', 'Orix_prod');
+//define('DB_USER', 'root');
+//define('DB_PASSWORD', 'password');
+//define('DB_HOST', '127.0.0.1');
+//define('DB_CHARSET', 'utf8');
+//define('DB_COLLATE', '');
+define('DB_NAME', 'dev_orix_wp_copy_of_prod');
+define('DB_USER', 'bleonard');
+define('DB_PASSWORD', 'Summer123@');
+define('DB_HOST', 'localhost:3306');
 define('DB_CHARSET', 'utf8');
-
-/** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
 /**#@+
@@ -51,6 +47,11 @@ define('AUTH_SALT',        'g(9Kl8xO0tr`]mDuDq)UP?XHJ/b>;K^o^y!$M7*q3;+MM:ScP>H!
 define('SECURE_AUTH_SALT', '?iJg9Kr,O5gr7|(bGhm8@eb}iJ!+-mnD<^MFBc,)U8--W@r0:!VHs[1){QqH-e?S');
 define('LOGGED_IN_SALT',   'LK@67zwtC8>c{N/K0f0!-Vxe(-vhn]&L_qa;sH1M4`Wq|Px~xRHBz0NK3f:W,+Z-');
 define('NONCE_SALT',       'Kh<@ 2g4@ZCJ.;4:R=1 -sV)OcH0oV[VkO^-gaT- K+{w/-~:/f^w.qav[E|>ED<');
+
+
+define( 'WPCF7_ADMIN_READ_CAPABILITY', 'manage_options' );
+define( 'WPCF7_ADMIN_READ_WRITE_CAPABILITY', 'manage_options' );
+
 
 /**#@-*/
 

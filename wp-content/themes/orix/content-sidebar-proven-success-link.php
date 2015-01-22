@@ -8,7 +8,7 @@
 	<aside class="col-xs-12 col-md-12">
 		<ul>
 			<li>
-				<p>Transactions</p>
+				<p>Featured Transactions</p>
 			</li>
 			<?php 
 			$tax_terms = get_terms('provensuccesscategory');

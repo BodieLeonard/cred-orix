@@ -24,7 +24,7 @@ get_header(); ?>
 	$isCapitalSolutionsMainPage = false;
 	$pageID = $post->ID;
 	?>
-	<div class="hero short" style="background-image: url(<?php echo $secondThumb; ?>) "></div>
+	<?php getHero($secondThumb); ?>
 		
 	</div>
 
@@ -59,10 +59,17 @@ get_header(); ?>
 		}
 		while (have_posts()) : the_post();
 
+		$terms = get_the_terms($post_id, 'provensuccesscategory');
+		$term = $terms;
+		foreach ( $terms as $term ) {
+			$term = $term->name;
+			break;
+		};
+
 		$excerpt = get_the_excerpt();
 		$dealCta = DealCTA::create([
 			"thumbnail"=> get_the_post_thumbnail(),
-			"headline"=>get_the_title(),
+			"headline"=>$term,//get_the_title(),
 			"excerpt"=>get_the_content(),
 		]);
 
@@ -70,8 +77,6 @@ get_header(); ?>
 		
 
 	<?php #get_template_part( 'content', 'proven-success' );  ?>
-
-
 
 
 		</main><!-- #main -->

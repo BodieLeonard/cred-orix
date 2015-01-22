@@ -20,12 +20,12 @@ get_header(); ?>
 	$post_home = get_post(3652);
 	$secondThumb = MultiPostThumbnails::get_post_thumbnail_url( 'page', 'secondary-image', $post_home->ID	);
 	?>
-	<div class="hero short" style="background-image: url(<?php echo $secondThumb; ?>) "></div>
+	<?php getHero($secondThumb); ?>
 
 	<div id="content" class="site-content">
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main top-padding" role="main">
 		
 		<?php
 		

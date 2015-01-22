@@ -48,7 +48,7 @@ function register_cpt_news() {
         'query_var' => true,
         'can_export' => true,
         'rewrite' => false,
-        'capability_type' => 'post'
+        'capability_type' => 'edit_posts'
     );
 
     register_post_type( $PLUGIN_NAME_SINGULAR_LOWER, $args );

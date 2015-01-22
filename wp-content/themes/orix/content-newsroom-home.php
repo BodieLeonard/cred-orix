@@ -14,19 +14,22 @@ $onHomePage = true;
 if (empty($pageSlug)) {
 
 	$filter = "news-featured";
-
 	$posts = query_posts(array( 'orderby' => 'title' , 'order' => 'ASC', 'post_type' => 'news', 'post_status'=>'publish', 'posts_per_page' => 1, "newsscategory"=>$filter)); 
 
+
 } else {
+
 	$onHomePage = false;
 	$filter = "news-".$pageSlug;
 	$posts = query_posts(array( 'orderby' => 'title' , 'order' => 'ASC', 'post_type' => 'news', 'post_status'=>'publish', 'posts_per_page' => 3, "newsscategory"=>$filter)); 
 	
 };
 
+
+
 $postsCount = count($posts);
 
-if ($postsCount >=1) {
+//if ($postsCount >=1) {
 	echo "<hr>";
 
 	echo "<section class='centered'><h1>ORIX NEWSROOM</h1></section>";
@@ -40,13 +43,13 @@ if ($postsCount >=1) {
 	while (have_posts()) : the_post(); 	
 		$excerpt = get_the_excerpt();
 		$headline = $post->post_title; 
-	  $articleCta = ArticleCTA::create([
-	  	"thumbnail"=> get_the_post_thumbnail(),
-	  	"headline"=>string_limit_words($headline,8),
-	  	"date"=>$post->post_date,
-	  	"excerpt"=> string_limit_words($excerpt,25),
-	  	"link"=>$post->guid."&filter=".$pageSlug
-	  ]);
+		  $articleCta = ArticleCTA::create([
+		  	"thumbnail"=> get_the_post_thumbnail(),
+		  	"headline"=>string_limit_words($headline,8),
+		  	"date"=>$post->post_date,
+		  	"excerpt"=> string_limit_words($excerpt,25),
+		  	"link"=>$post->guid."&filter=".$pageSlug
+		  ]);
 
 	endwhile;  wp_reset_query();
 
@@ -56,7 +59,7 @@ if ($postsCount >=1) {
 		$args = array(
 	    'post_type' => 'news',
 	    'post_status'=>'publish',
-	    'posts_per_page' => 5,
+	    'posts_per_page' => 6,
 	    'orderby'=> 'date', 
 	    'order' => 'DEC',
 	    'tax_query' =>  array( 'taxonomy' => 'newsscategory', 'terms' => 'news-featured','operator' => 'NOT IN' )
@@ -81,6 +84,6 @@ if ($postsCount >=1) {
 
 	echo "</div>";
 
-};
+//};
 
 ?>

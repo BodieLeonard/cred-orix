@@ -10,16 +10,23 @@
  * @package Orix
  */
 
-get_header(); ?>
+get_header(); 
 
-	<div class="hero short" style="background-image: url(<?php echo get_template_directory_uri() . '/fpo/hero-careers.jpg' ?>) ">
+$filter = (isset($_REQUEST['filter'])) ? $_REQUEST['filter'] : "ORIX";
+$title = str_replace("-", " ", $filter);
+
+$post_home = get_post(3754);
+$secondThumb = MultiPostThumbnails::get_post_thumbnail_url( 'page', 'secondary-image', $post_home->ID	);
+?>
+	
+	<?php getHero($secondThumb); ?>
 		
 	</div>
 
 	<div id="content" class="site-content">
 
 	<section class='centered '>
-			<h1>ORIX NEWSROOM</h1>
+			<h1><?php echo $title; ?> NEWSROOM</h1>
 		</section>
 
 	<div id="primary" class="content-area">
@@ -28,12 +35,16 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php get_template_part( 'content', 'newsroom-full' ); ?>
+				
 				
 
-				<div class="col-xs-12 col-md-3">
+				<div class="col-xs-12 col-md-3 pull-right">
 					<?php get_template_part( 'content', 'sidebar-news-archive' ); ?>
 				</div>
+
+				<?php get_template_part( 'content', 'newsroom-full' ); 
+					#get_template_part( 'content', 'sidebar-news-archive' );
+				?>
 
 			<?php endwhile; // end of the loop. ?>
 

@@ -80,8 +80,17 @@ if (count($term_object_ids) > 0 && !$hasGroups) :
 					<p>Our Team</p>
 				</li>
 						<?php
+						$nobio = false;
 						foreach ($management as $post) {
 							
+							$terms = get_the_terms( $post->ID, 'managemenmcategory' );
+							foreach ( $terms as $term ) {
+								
+								if($term->slug == 'management-team-no-bio'){
+									$nobio = true;
+								};
+							};
+
 							$name = $post->post_title . "<br>";
 							$slug = $post->post_name;
 							$title = get_post_meta($post->ID, 'title', true);
@@ -89,12 +98,21 @@ if (count($term_object_ids) > 0 && !$hasGroups) :
 							$email = get_post_meta($post_id_of_manager, 'email', true);
 
 							echo "<li class='team id-".$post->ID."''>";
-							echo "<p><a href='/".$slug."?filter=".$managementCatSlug."'>";
-							echo "<strong>".$name."</strong>";
-							echo "<em>".$title."</em>";
-							echo "<a class='phone' href='tel:+".$phone."'>".$phone."</a>";
-							#echo "<a class='email' href='mailto:".$email."'>".$email."</a>";
-							echo "</a></p>";
+							
+							if(!$nobio) {
+								echo "<p><a href='/".$slug."?filter=".$managementCatSlug."'>";
+								echo "<strong>".$name."</strong>";
+								echo "<em>".$title."</em>";
+								echo "<a class='phone' href='tel:+".$phone."'>".$phone."</a>";
+								#echo "<a class='email' href='mailto:".$email."'>".$email."</a>";
+								echo "</a></p>";
+							} else {
+								echo "<p><a>";
+								echo "<strong>".$name."</strong>";
+								echo "<em>".$title."</em>";
+								echo "<a class='phone' href='tel:+".$phone."'>".$phone."</a>";
+								echo "</a></p>";	
+							}
 							echo "</li>";
 
 						}
@@ -122,6 +140,9 @@ elseif(count($term_object_ids)) :
 			<li>
 				<p>Our Team</p>
 			</li>
+			<?php if($managementCatSlug == 'municipal-finance') : ?>
+				<li><a href="/management/?filter=municipal-finance"><strong>Municipal Finance Team</strong></a> </li>
+			<?php endif; ?>
 		<?php
 			$i = 0;
 			foreach ( $termchildren as $child ) {
@@ -145,3 +166,6 @@ elseif(count($term_object_ids)) :
 endif;
 
 ?>
+
+
+

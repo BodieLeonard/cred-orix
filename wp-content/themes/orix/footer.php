@@ -9,6 +9,8 @@
 ?>
 
 	</div><!-- #content -->
+	</div><!-- #page -->
+
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
@@ -16,7 +18,7 @@
 				
 				<div class="logo"></div>
 
-				<div class="address">
+				<div class="address" style="margin-top:100px;">
 					<h1>ORIX Americas</h1>
 					<p>1717 Main St. - Ste 1100</p>
 					<p>Dallas, TX 75201</p>
@@ -26,7 +28,7 @@
 				<div class="social">
 					<a href="#"><i class="fa fa-twitter"></i></a>
 					<a href="#"><i class="fa fa-linkedin"></i></a>
-					
+					<a class="print"><i class="fa fa-print"></i></a>
 				</div>
 		
 			</div>
@@ -67,7 +69,6 @@
 			</div>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
-</div><!-- #page -->
 
 <?php wp_footer(); ?>
 

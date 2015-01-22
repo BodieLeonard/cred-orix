@@ -9,7 +9,15 @@
 
 
 global $pageSlug; 
+global $onCapitalSolutions;
 $onHomePage = true;
+
+$newSlug = $pageSlug;
+$newSlug = explode("-", $pageSlug);
+$parentTerm = array_shift($newSlug);
+$newSlug = implode('-', $newSlug);
+
+
 
 if (empty($pageSlug)) {
 
@@ -17,25 +25,31 @@ if (empty($pageSlug)) {
 	$posts = query_posts(array( 'post_type' => 'news', 'post_status'=>'publish', 'posts_per_page' => 1, 'orderby'=> 'date', 'order' => 'DEC', "newsscategory"=>$filter)); 
 
 } else {
+	
 	$onHomePage = false;
 	$filter = "news-".$pageSlug;
 	$posts = query_posts(array( 'post_type' => 'news', 'post_status'=>'publish', 'posts_per_page' => 3, 'orderby'=> 'date', 'order' => 'DEC', "newsscategory"=>$filter)); 
 	
 };
 
+if($onCapitalSolutions && $parentTerm == 'provensuccess') {
+
+	$pageSlug = $newSlug;
+	$filter = 'news-'.$newSlug;
+	$posts = query_posts(array( 'post_type' => 'news', 'post_status'=>'publish', 'posts_per_page' => 3, 'orderby'=> 'date', 'order' => 'DEC', "newsscategory"=>$filter)); 
+}; 
+
+
 $postsCount = count($posts);
 
 if ($postsCount >=1) {
 	echo "<hr>";
 
-	echo "<section class='centered'><h1>ORIX NEWSROOM</h1></section>";
+	$title = str_replace("-", " ", $pageSlug);
+	echo "<section class='centered'><h1>".$title." NEWSROOM</h1></section>";
 
 	echo "<div class='holder-articles row'>";
 
-	//WordPress loop for custom post type
-	//$my_query = new WP_Query('post_type=news&posts_per_page=3');
-
-	//while ($my_query->have_posts()) : $my_query->the_post();
 	while (have_posts()) : the_post(); 	
 		$excerpt = get_the_excerpt();
 		$headline = $post->post_title; 

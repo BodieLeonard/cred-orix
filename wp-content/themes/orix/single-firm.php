@@ -21,7 +21,7 @@ get_header(); ?>
 	$secondThumb = MultiPostThumbnails::get_post_thumbnail_url( 'firm', 'secondary-image', $post->ID	);
 	
 	?>
-	<div class="hero short" style="background-image: url(<?php echo $secondThumb; ?>) "></div>
+	<?php getHero($secondThumb); ?>
 
 	<div id="content" class="site-content">
 

@@ -24,7 +24,7 @@ get_header(); ?>
 	$isCapitalSolutionsMainPage = false;
 	$pageID = $post->ID;
 	?>
-	<div class="hero short" style="background-image: url(<?php echo $secondThumb; ?>) "></div>
+	<?php getHero($secondThumb); ?>
 
 
 	<div id="content" class="site-content">
@@ -67,7 +67,8 @@ get_header(); ?>
 					"icomoon"=> "icon-".get_post_meta($post->ID, 'icon', true),
 					"headline"=>get_the_title(),
 					"excerpt"=> string_limit_words($excerpt,$charMax, $showElips),
-					"link"=> get_post_meta($post->ID, 'link', true)
+					"link"=> get_post_meta($post->ID, 'link', true),
+					"target"=>get_post_meta($post->ID, 'target', true)
 				]);
 
 			} else {

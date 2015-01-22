@@ -89,7 +89,7 @@ var getAgent = function() {
 		if (Orix.domElement.header) {
 
 			if (Orix.get.isHome) {
-				if (Orix.domElement.header.offset().top > 35) {
+				if (Orix.domElement.header.offset().top > -1) {
 					// make the header sticky
 					Orix.domElement.header.addClass("sticky-header");
 				} else {
@@ -167,7 +167,14 @@ var getAgent = function() {
 			100
 		)
 
-	}
+	};
+
+	Orix.fn.fixHeight = function(){
+
+		if ($('body').hasClass('post-type-archive-provensuccess')) {
+			$(".deal").matchHeight();
+		};
+	};
 
 
 	// set contact form inside modal window
@@ -192,9 +199,36 @@ var getAgent = function() {
 		Orix.fn.hideMainMenuNews();
 		Orix.fn.animateMainMenu.init();
 		Orix.fn.contactModal();
+
+		Orix.fn.fixHeight();
+
 	};
 	Orix.fn.init();
 
+
+	// add print button function
+	var printHtmlElement = "<button class='print'>Print</button>";
+	//$('body').append(printHtmlElement);
+	
+	$('.print').on('click', function(){
+		
+		html2canvas(document.body, {
+	        onrendered: function(canvas) {
+	        	
+	        	$('html').css("width", "670px");
+	        	$("#page").hide();
+	        	$("footer").hide();
+	            document.body.appendChild(canvas);
+	            window.print();
+	            $('canvas').remove();
+	            $("#page").show();
+	            $("footer").show();
+	            $('html').css("width", "auto");
+	        }
+	    });
+	    
+	});
+	
 
 	// end jquery 
 })(jQuery);

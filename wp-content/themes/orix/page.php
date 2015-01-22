@@ -26,7 +26,7 @@ get_header(); ?>
 		$isCapitalSolutionsMainPage = false;
 		$pageID = $post->ID;
 		?>
-		<div class="hero short" style="background-image: url(<?php echo $secondThumb; ?>) "></div>
+		<?php getHero($secondThumb); ?>
 
 	<?php endif; ?>
 	

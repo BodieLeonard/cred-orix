@@ -20,22 +20,46 @@ get_header(); ?>
 	$post_home = get_post(3754);
 	$secondThumb = MultiPostThumbnails::get_post_thumbnail_url( 'page', 'secondary-image', $post_home->ID	);
 	$pageID = $post->ID;
+
+	$taxonomy = 'news-'.$_REQUEST['filter'];
+	$filter = (isset($_REQUEST['filter'])) ? $_REQUEST['filter'] : "ORIX";
+	$title = str_replace("-", " ", $filter);
+
+	// check to see if year is in the url
+	$path = $_SERVER['REQUEST_URI']; 
+	$folders = explode('/', $path);
+	$hasYear = ($folders[1] == 'news') ? false : true;
+
+	if(isset($_REQUEST['filter'])){
+
+		if($hasYear){
+			$posts = query_posts(array( 'year'=>get_the_time('Y'), 'post_type' => 'news', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'date', 'order' => 'DEC', "newsscategory"=>$taxonomy)); 
+		} else {
+			$posts = query_posts(array(  'post_type' => 'news', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'date', 'order' => 'DEC', "newsscategory"=>$taxonomy)); 
+		};
+		
+
+	} else {
+		if($hasYear){
+		}else {
+			$posts = query_posts(array(  'post_type' => 'news', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'date', 'order' => 'DEC')); 
+		}
+		
+	};
 	?>
-	<div class="hero short" style="background-image: url(<?php echo $secondThumb; ?>) "></div>
+	<?php getHero($secondThumb); ?>
 
 	<div id="content" class="site-content">
 
 	<div id="primary" class="content-area">
 
 		<section class='centered '>
-			<h1>ORIX NEWSROOM</h1>
+			<h1><?php echo $title; ?> NEWSROOM</h1>
 		</section>
 
 		<main id="main" class="site-main col-xs-13 col-md-9 news" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>
-			
-				
 
 				<article class="full simple">
 					<date><?php the_date(); ?></date>
@@ -45,7 +69,7 @@ get_header(); ?>
 			<?php endwhile; // end of the loop. ?>
 			
 		</main><!-- #main -->
-		<div class="col-xs-12 col-md-3">
+		<div class="col-xs-12 col-md-3 pull-right">
 				<?php get_template_part( 'content', 'sidebar-news-archive' ); ?>
 			</div>
 	</div><!-- #primary -->
