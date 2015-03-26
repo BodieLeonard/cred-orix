@@ -23,16 +23,11 @@
 //define('DB_HOST', '127.0.0.1');
 //define('DB_CHARSET', 'utf8');
 //define('DB_COLLATE', '');
-define('DB_NAME', 'dev_orix_wp_copy_of_prod');
-<<<<<<< HEAD
-define('DB_USER', 'bleonard');
-define('DB_PASSWORD', 'Summer123@');
-define('DB_HOST', 'localhost:3306');
-=======
+define('DB_NAME', 'orix');
+
 define('DB_USER', 'root');
 define('DB_PASSWORD', 'Summer123@');
 define('DB_HOST', '127.0.0.1');
->>>>>>> eb1160ceb3b05a498355ba8fe41361f099c06092
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 

@@ -26,8 +26,8 @@
 				</div>
 
 				<div class="social">
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-linkedin"></i></a>
+					<a target='_blank' href="https://twitter.com/orixventures"><i class="fa fa-twitter"></i></a>
+					<a target='_blank' href="https://www.linkedin.com/company/orix"><i class="fa fa-linkedin"></i></a>
 					<a class="print"><i class="fa fa-print"></i></a>
 				</div>
 		

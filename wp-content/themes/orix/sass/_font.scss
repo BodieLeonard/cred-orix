@@ -1,58 +1,66 @@
 @include font-face(
 	"BrandonLight", 
-	font-files("orix/fonts/brandon/brandon-light.woff", 
-	"orix/fonts/brandon/brandon-light.ttf", 
-	"orix/fonts/brandon/brandon-light.svg"), 
-	"orix/fonts/brandon/brandon-light.eot"
+	font-files("brandon/brandon-light.woff", 
+						 "brandon/brandon-light.ttf", 
+						 "brandon/brandon-light.svg"), 
+	"brandon/brandon-light.eot"
 );
 
 @include font-face(
 	"BrandonReg", 
-	font-files("orix/fonts/brandon/brandon-reg.woff", 
-	"orix/fonts/brandon/brandon-reg.ttf", 
-	"orix/fonts/brandon/brandon-reg.svg"), 
-	"orix/fonts/brandon/brandon-reg.eot"
+	font-files("brandon/brandon-reg.woff", 
+						 "brandon/brandon-reg.ttf", 
+						 "brandon/brandon-reg.svg"), 
+	"brandon/brandon-reg.eot"
 );
 
 @include font-face(
 	"BrandonMed", 
-	font-files("orix/fonts/brandon/brandon-med.woff", 
-	"orix/fonts/brandon/brandon-med.ttf", 
-	"orix/fonts/brandon/brandon-med.svg"), 
-	"orix/fonts/brandon/brandon-med.eot"
+	font-files("brandon/brandon-med.woff", 
+						 "brandon/brandon-med.ttf", 
+						 "brandon/brandon-med.svg"), 
+	"brandon/brandon-med.eot"
 );
 
 @include font-face(
 	"MerriweatherReg", 
-	font-files("orix/fonts/merriweather/merriweather-reg.woff", 
-	"orix/fonts/merriweather/merriweather-reg.ttf", 
-	"orix/fonts/merriweather/merriweather-reg.svg"), 
-	"orix/fonts/merriweather/merriweather-reg.eot"
+	font-files("merriweather/merriweather-reg.woff", 
+						 "merriweather/merriweather-reg.ttf", 
+						 "merriweather/merriweather-reg.svg"), 
+	"merriweather/merriweather-reg.eot"
 );
 
 @include font-face(
 	"MerriweatherItalic", 
-	font-files("orix/fonts/merriweather/merriweather-italic.woff", 
-	"orix/fonts/merriweather/merriweather-italic.ttf", 
-	"orix/fonts/merriweather/merriweather-italic.svg"), 
-	"orix/fonts/merriweather/merriweather-italic.eot"
+	font-files("merriweather/merriweather-italic.woff", 
+						 "merriweather/merriweather-italic.ttf", 
+						 "merriweather/merriweather-italic.svg"), 
+	"merriweather/merriweather-italic.eot"
 );
 
 
 @include font-face(
+	"GothamLight", 
+	font-files("gotham/gothamhtf-xlight.woff", 
+						 "gotham/gothamhtf-xlight.ttf", 
+						 "gotham/gothamhtf-xlight.svg"), 
+	"gotham/gothamhtf-xlight.eot"
+);
+
+@include font-face(
 	"ProximaLight", 
-	font-files("orix/fonts/proximanova/proximanova-light.woff", 
-	"orix/fonts/proximanova/proximanova-light.ttf", 
-	"orix/fonts/proximanova/proximanova-light.svg"), 
-	"orix/fonts/proximanova/proximanova-light.eot"
+	font-files("proximanova/proximanova-light.woff", 
+						 "proximanova/proximanova-light.ttf", 
+						 "proximanova/proximanova-light.svg"), 
+	"proximanova/proximanova-light.eot"
 );
 
 @include font-face(
 	"icomoon", 
-	font-files("orix/fonts/icomoon/icomoon.woff", 
-	"orix/fonts/icomoon/icomoon.ttf", 
-	"orix/fonts/icomoon/icomoon.svg"), 
-	"orix/fonts/icomoon/icomoon.eot"
+	font-files("icomoon/icomoon.woff", 
+						 "icomoon/icomoon.ttf", 
+						 "icomoon/icomoon.svg"), 
+	"icomoon/icomoon.eot"
 );
 
 [class^="icon-"], [class*=" icon-"] {

@@ -1,232 +1,200 @@
+
 .hero{
-   height:460px;
- }
+    height:460px;
+  }
 
 
 @media screen and (min-width: 320px) {
- .content-area .holder-bullets {
-   article {
-     &.bullet {
-       blockquote {
-         height: auto;
-         margin-bottom: 20px;
-         min-height:100px;
-       }
-     }
-   }
- }
+  .content-area .holder-bullets {
+    article {
+      &.bullet {
+        blockquote {
+          height: auto;
+          margin-bottom: 20px;
+          min-height:100px;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (min-width: $screen-sm-min) {
+  
 
 
+  .content-area article.solution blockquote {
+    height: auto;
+    margin-bottom: 20px;
+    min-height:100px;
+  }
+  
+  .hero {
+    height:660px;
 
- .content-area article.solution blockquote {
-   height: auto;
-   margin-bottom: 20px;
-   min-height:100px;
- }
+    &.short {
+      /*height: 408px;*/
+      height: 640px;
+    }
+    
 
- .hero {
-   height:660px;
+    .hero-article {
+      top:25%;
 
-   &.short {
-     /*height: 408px;*/
-     /* height: 640px; */
-     height: 530px;
-   }
+      h1 {
+        font-size: 40px;
+      }
+    }
+  }
+  .holder-artiles {
+    margin: 0 5px;
+  }
 
-
-   .hero-article {
-     top:25%;
-
-     h1 {
-       font-size: 40px;
-     }
-   }
- }
- .holder-artiles {
-   margin: 0 5px;
- }
-
- .content-area .holder-bullets {
-   article {
-     &.bullet {
-       blockquote {
-         height: auto;
-         margin-bottom: 20px;
-         min-height:100px;
-       }
-     }
-   }
- }
+  .content-area .holder-bullets {
+    article {
+      &.bullet {
+        blockquote {
+          height: auto;
+          margin-bottom: 20px;
+          min-height:100px;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 600px) {
-
- .content-area article.solution blockquote {
-   height: auto;
-   margin-bottom: 20px;
-   min-height:100px;
- }
- .content-area .holder-bullets article.bullet blockquote {
-   height: auto;
-   margin-bottom: 20px;
-   min-height:100px;
- }
-
+  
+  .content-area article.solution blockquote {
+    height: auto;
+    margin-bottom: 20px;
+    min-height:100px;
+  }
+  .content-area .holder-bullets article.bullet blockquote {
+    height: auto;
+    margin-bottom: 20px;
+    min-height:100px;
+  }
+  
 }
 
-.main-navigation.toggled .nav-menu {
- display:block;
-}
+@media screen and (max-width: 1200px) {
 
+    .menu-toggle,
+    .main-navigation.toggled .nav-menu {
+      display: block;
+      top: 10px;
+      position: relative;
+    }
 
-@media screen and (min-width: $menu-toggle-width) {
- .main-navigation .nav-menu.mobile-menu {
-     display:none !important;
- }
-}
-
-@media screen and (max-width: $menu-toggle-width) {
-
-   .menu-toggle,
-   .main-navigation.toggled .nav-menu {
-     display: block;
-     top: 10px;
-     position: relative;
-   }
-   .main-navigation.toggled .nav-menu.mobile-menu {
-     display:block;
-   }
-   .main-navigation.toggled .nav-menu {
-     display:none;
-   }
-   #menu-main-menu{
-     width:100%;
-   }
-   .main-navigation ul li {
-     float:none;
-     text-align: center;
-     border-bottom:1px solid #bbb;
-   }
-   header {
-     position:relative;
-   }
-   .main-navigation ul li:hover ul{
-     display:none;
-   }
-   .main-navigation ul {
-     display: none;
-   }
-   .main-navigation {
-     background:black;
-   }
+    .main-navigation ul {
+      display: none;
+    }
 }
 
 
 
 
 @media screen and (min-width: 990px) {
+    
+    .content-area article.solution blockquote {
+      height: 120px;
+      min-height: 60px;
+    }
+    .content-area article.solution .button {
+      margin-bottom:80px;
+    }
+    
+    .content-area .holder-bullets article.bullet blockquote {
+      height: 180px;
+    }
 
-   .content-area article.solution blockquote {
-     height: 120px;
-     min-height: 60px;
-   }
-   .content-area article.solution .button {
-     margin-bottom:80px;
-   }
+    .content-area .holder-bullets.no-link article.bullet blockquote {
+      height:220px;
+    }
+    
+    .content-area .bullet h1 {
+      height:50px;
+    }
+    .content-area article.article h1 {
+      height:100px;
+    font-size:16px;
+    }
+    .content-area article blockquote {
+      margin-bottom:40px;
+    }
 
-   .content-area .holder-bullets article.bullet blockquote {
-     height: 180px;
-   }
+    .content-area article.article h1 {
+      height:70px;
+    }
+    .content-area article.article blockquote {
+      height: 140px;
+    }
+    .content-area article.solution blockquote {
+      height: 120px;
+      min-height: 60px;
+    }
+    .content-area article.solution .button {
+      margin-bottom:80px;
+    }
+    .content-area .holder-bullets article.bullet blockquote {
+      height: 150px;
+    }
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+  }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+    margin-top: 7.5px;
+  }
+  .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+      display:block !important;
+  }
 
-   .content-area .holder-bullets.no-link article.bullet blockquote {
-     height:180px;
-   }
+  .hero-article {
+    top:25%;
+    width: 990px;
+    left: 50%;
+    margin-left: -495px;
+    
 
-   .content-area .bullet h1 {
-     height:50px;
-   }
-   .content-area article.article h1 {
-     height:100px;
-   font-size:16px;
-   }
-   .content-area article blockquote {
-     margin-bottom:40px;
-   }
-
-   .content-area article.article h1 {
-     height:70px;
-   }
-   .content-area article.article blockquote {
-     height: 140px;
-   }
-   .content-area article.solution blockquote {
-     height: 120px;
-     min-height: 60px;
-   }
-   .content-area article.solution .button {
-     margin-bottom:80px;
-   }
-   .content-area .holder-bullets article.bullet blockquote {
-     height: 150px;
-   }
-   .navbar-header {
-       float: none;
-   }
-   .navbar-left,.navbar-right {
-       float: none !important;
-   }
-   .navbar-toggle {
-       display: block;
-   }
-   .navbar-collapse {
-       border-top: 1px solid transparent;
-       box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-   }
-   .navbar-fixed-top {
-   top: 0;
-   border-width: 0 0 1px;
- }
-   .navbar-collapse.collapse {
-       display: none!important;
-   }
-   .navbar-nav {
-       float: none!important;
-   margin-top: 7.5px;
- }
- .navbar-nav>li {
-       float: none;
-   }
-   .navbar-nav>li>a {
-       padding-top: 10px;
-       padding-bottom: 10px;
-   }
-   .collapse.in{
-     display:block !important;
- }
-
- .hero-article {
-   top:25%;
-   width: 990px;
-   left: 50%;
-   margin-left: -495px;
-
-
-   h1 {
-     font-size: 40px;
-   }
- }
- .bridge-outline {
-   width: 100%;
-    height: 270px;
+    h1 {
+      font-size: 40px;
+    }
+  }
+  .bridge-outline {
+    width: 1466px;
+    height:270px;
     background-size: contain;
-    background-repeat: no-repeat;
-    background-position: top center;
+    background-repeat:no-repeat;
+    background-position:top center;
+    left: -140px;
     position: relative;
-    margin-bottom: 40px;
-    display: block;
- }
+    margin-bottom:40px;
+    display:block;
+  }
 
 }

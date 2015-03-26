@@ -270,6 +270,35 @@ function getHero($thumb) {
 	echo '<img style="margin-bottom:40px; "src="'.$thumb.'">';
 }
 
+function myplugin_save_post () {
+    global $post;
+
+	if ((!defined ("DOING_AUTOSAVE") || !DOING_AUTOSAVE) /*&& get_post_type ($post) == "my_post_type"*/) { // Post type can also be page, post, etc
+		
+		//print_r($post);
+
+		//update_post_meta ($post->ID, "meta_key", $_POST ["meta_value"]);
+		$to = "webmaster@orix.com";
+		$subject = "Orix post updated";
+		$headers = "From: webmaster@orix.com\r\n";
+		$headers .= "Reply-To: webmaster@orix.com\r\n";
+		$headers .= "CC:\r\n";
+		$headers .= "MIME-Version: 1.0\r\n";
+		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+		$message = '<html><body><table>';
+		$message .= '<tr> <td> Orix post has been update. </td> </tr>
+			         <tr> <td> Title: '.$post->post_title.' </td></tr>
+			         <tr> <td> <a href="'.$post->guid.'">Preview post</a> </td></tr>
+			         <tr> <td> <a href="'.get_admin_url().'post.php?post='.$post->ID.'&action=edit">Edit post</a> </td></tr>
+			        ';
+		$message .= '</table></body></html>';
+		
+		wp_mail($to, $subject, $message, $headers);
+	} // if ()
+}
+
+add_action ("save_post", "myplugin_save_post");
+
 /**
  * Implement the Custom Header feature.
  */
