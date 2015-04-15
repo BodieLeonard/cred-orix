@@ -69,8 +69,20 @@
 			</div>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
-
+<?php echo "Option ".get_option( 'contact_form_email' ); ?> 	
 <?php wp_footer(); ?>
+
+
+<script>
+(function($) {
+$('.management-cta, .management').bind('contextmenu', function(e) {
+    return false;
+});
+$("#wpcf7-f4318-o1 input, #wpcf7-f4318-o1 textarea").css({"color":"#cdcdcd"})
+})(jQuery);
+</script>
+
+
 
 </body>
 </html>
