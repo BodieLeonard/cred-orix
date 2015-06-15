@@ -180,15 +180,37 @@ var getAgent = function() {
 	// set contact form inside modal window
 	Orix.fn.contactModal = function() {
 		if(Orix.domElement.contactForm ) {
-			var btnModal = '<a class="button basic" data-toggle="modal" data-target="#contactModal">Contact</a>',
-					form = $(Orix.domElement.contactForm).html(),
-					divContactModal = '<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModal" aria-hidden="true"><div class="modal-dialog modal-md"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>'+form+'</div></div></div>';
+			var btnModal = '<a class="button basic" data-toggle="modal" data-target="#contactModal">Contact</a>';
+			var	checker = '<input type="text" name="checker" value="" class="checker" style="color: rgb(205, 205, 205);">';
+			Orix.domElement.contactForm.append(checker);
+			var	form = $(Orix.domElement.contactForm).html();
+			var divContactModal = '<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModal" aria-hidden="true"><div class="modal-dialog modal-md"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>'+form+'</div></div></div>';
 			Orix.domElement.contactForm.before(btnModal);
 			Orix.domElement.contactForm.before(divContactModal);
+			
+			// add hiddne input to prevent spam
+
+			$('.checker').hide();
 			Orix.domElement.contactForm.remove();
 
+
+			$(".wpcf7-submit").on('click', function(e){ 
+				debugger;
+				if($("#contactModal").find('.checker').val().length > 0) {
+					e.preventDefault();
+				} else {
+					if($("#contactModal").find('[name=your-name]').val().length <= 0){
+						e.preventDefault();
+					}
+					if($("#contactModal").find('[name=your-email]').val().length <= 0){
+						e.preventDefault();
+					}
+				}
+			});
 		}
 	}
+
+	
 
 	Orix.fn.init = function () {
 		// initialize

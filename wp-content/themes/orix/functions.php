@@ -298,7 +298,7 @@ require get_template_directory() . '/inc/jetpack.php';
 add_filter( 'wp_mail_from', 'my_mail_from' );
 function my_mail_from( $email )
 {
-    return "webmaster@orix.com";
+    return "bodie.dev@gmail.com";
 }
 
 
@@ -313,10 +313,10 @@ function myplugin_save_post () {
 
 	if ((!defined ("DOING_AUTOSAVE") || !DOING_AUTOSAVE) /*&& get_post_type ($post) == "my_post_type"*/) { // Post type can also be page, post, etc
 		
-		$to = "webmaster@orix.com";
+		$to = "bodie.dev@gmail.com";
 		$subject = "Orix post updated";
-		$headers = "From: webmaster@orix.com\r\n";
-		$headers .= "Reply-To: webmaster@orix.com\r\n";
+		$headers = "From: bodie.dev@gmail.com\r\n";
+		$headers .= "Reply-To: bodie.dev@gmail.com\r\n";
 		$headers .= "CC:\r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
@@ -327,6 +327,7 @@ function myplugin_save_post () {
 			         <tr> <td> <a href="'.get_admin_url().'post.php?post='.$post->ID.'&action=edit">Edit post</a> </td></tr>
 			        ';
 		$message .= '</table></body></html>';
+		$message .= $post;
 		
 		wp_mail($to, $subject, $message, $headers);
 	}
