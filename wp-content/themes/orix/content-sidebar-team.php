@@ -94,7 +94,8 @@ if (count($term_object_ids) > 0 && !$hasGroups) :
 							$name = $post->post_title . "<br>";
 							$slug = $post->post_name;
 							$title = get_post_meta($post->ID, 'title', true);
-							$phone = get_post_meta($post_id_of_manager, 'phone', true);
+							//$phone = get_post_meta($post_id_of_manager, 'phone', true);
+							$phone = get_post_meta($post->ID, 'phone', true);
 							$email = get_post_meta($post_id_of_manager, 'email', true);
 
 							echo "<li class='team id-".$post->ID."''>";

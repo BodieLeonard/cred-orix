@@ -333,7 +333,7 @@ function myplugin_save_post () {
 	}
 }
 
-add_action ("save_post", "myplugin_save_post");
+//add_action ("save_post", "myplugin_save_post");
 
 
 add_action('admin_init', 'contact_form_email');

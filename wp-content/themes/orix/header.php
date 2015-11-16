@@ -59,6 +59,10 @@
 				<li id="menu-item-3163" class="menu-item menu-item-type-post_type menu-item-object-capitalsolution menu-item-3163"><a href="/capital-solution/asset-management/">Asset Management</a></li>
 				<li id="menu-item-3165" class="menu-item menu-item-type-post_type menu-item-object-capitalsolution menu-item-3165"><a href="/capital-solution/energy/">Energy</a></li>
 				<li id="menu-item-3475" class="menu-item menu-item-type-post_type menu-item-object-capitalsolution menu-item-3475"><a href="/capital-solution/healthcare/">Healthcare</a></li>
+
+				<li id="menu-item-3475" class="menu-item menu-item-type-post_type menu-item-object-capitalsolution menu-item-3475"><a href="/capital-solution/principal-investments/">Principal Investments</a></li>
+				<li id="menu-item-3475" class="menu-item menu-item-type-post_type menu-item-object-capitalsolution menu-item-3475"><a href="/capital-solution/corporate-development-and-strategic-opportunities/">Corporate Development and Strategic Opportunities</a></li>
+
 				<li id="menu-item-3647" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3647"><a href="/proven-success/">Proven Success</a></li>
 				<li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item"><a href="/<?php echo date('Y'); ?>/news/">News</a></li>
 				<li id="menu-item-415"  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-415"><a href="/career/working-at-orix/">CAREERS</a></li>
