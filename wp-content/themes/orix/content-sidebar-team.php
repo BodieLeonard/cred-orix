@@ -33,6 +33,13 @@ $termchildren = get_term_children( $term_id, $taxonomy_name );
 
 $mainPage = $post->post_name;
 
+// checkbox in capital solutions
+// and Orix Managemnt must have the page slug in the cat name
+$hasTeams = (get_post_meta($post->ID, 'teams_on', true)[0] == "On") ? true:false;
+//print_r( $wpdb->get_row("SELECT term_id FROM wp_terms WHERE slug = 'management-$post->post_name-foobar'") );
+
+
+
 $hasGroups = false; 
 if(count($termchildren) > 0 && $mainPage == 'municipal-finance') {
 	$hasGroups = true;
@@ -167,6 +174,10 @@ elseif(count($term_object_ids)) :
 endif;
 
 ?>
+
+
+
+
 
 
 

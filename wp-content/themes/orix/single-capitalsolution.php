@@ -79,8 +79,9 @@ get_header(); ?>
 					?>
 
 					<?php
+					$hasBusinessUnits = (get_post_meta($post->ID, 'business_units_on', true)[0] == "false") ? false:true;
 
-					if($isSubPage) {
+					if($isSubPage && $hasBusinessUnits) {
 						echo "<div class='col-xs-12 col-md-3'>";
 
 							$showTransactions = get_post_meta($pageID, 'show_transactions', true);

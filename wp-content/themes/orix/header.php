@@ -51,7 +51,7 @@
 			<button class="menu-toggle"><i class="fa fa-bars"></i></button>
 			<?php wp_nav_menu( array( 'theme_location' => 'main-menu' , 'show_home'=>false ) ); ?>
 
-			<ul id="menu-main-menu" class="menu nav-menu mobile-menu">
+			<!-- <ul id="menu-main-menu" class="menu nav-menu mobile-menu">
 				<li id="menu-item-3488" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3488"><a href="/firm/">Our Firm</a></li>
 				<li id="menu-item-3164" class="menu-item menu-item-type-post_type menu-item-object-capitalsolution menu-item-has-children menu-item-3164"><a href="/capital-solution/corporate-capital/">Corporate Capital</a></li>
 				<li id="menu-item-3164" class="menu-item menu-item-type-post_type menu-item-object-capitalsolution menu-item-has-children menu-item-3164"><a href="/capital-solution/real-estate/">Real Estate</a></li>
@@ -68,7 +68,7 @@
 				<li id="menu-item-415"  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-415"><a href="/career/working-at-orix/">CAREERS</a></li>
 				<li id="menu-item-3280" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3280"><a target="_blank" href="http://orixfoundation.org/">Community</a></li>
 				<li id="menu-item-3651" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3651"><a href="/offices/">Contact</a></li>
-			</ul>
+			</ul> -->
 			
 		</nav><!-- #site-navigation -->	
 
