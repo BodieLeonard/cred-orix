@@ -102,6 +102,9 @@ get_header(); ?>
 							if ($sidebar_pid == 157) {
 								$colWidth = 12;
 							}
+							if(!$hasBusinessUnits){
+								$colWidth = 12;
+							}
 						?>
 						
 
@@ -136,6 +139,9 @@ get_header(); ?>
 							if (count($term_object_ids) > 0 && $isSubPage) {
 								$colCenterWidth = 6;
 							} else {
+								$colCenterWidth = 9;
+							}
+							if(!$hasBusinessUnits){
 								$colCenterWidth = 9;
 							}
 
