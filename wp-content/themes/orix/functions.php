@@ -6,6 +6,9 @@
  */
 
 
+
+//require get_template_directory() . '/procedures/flush.php';
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
@@ -44,6 +47,13 @@ function orix_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'orix' ),
+	) );
+
+	// This theme uses wp_nav_menu() in one location.
+	register_nav_menus( array(
+		'mobile' => __( 'Mobile Menu', 'main-menu-mobile' ),
+		'container' => ' ',
+		'container_class' => false
 	) );
 	
 	/*
@@ -212,6 +222,11 @@ if (class_exists('MultiPostThumbnails')) {
 		'id' => 'secondary-image',
 		'post_type' => 'firm'
  	));
+ 	new MultiPostThumbnails(array(
+		'label' => 'Secondary Image',
+		'id' => 'secondary-image',
+		'post_type' => 'community'
+ 	));
  }
 
  /**
@@ -331,6 +346,59 @@ function myplugin_save_post () {
 		
 		wp_mail($to, $subject, $message, $headers);
 	}
+}
+
+function sort_array_by_property( $array, $property ){
+    $cur = 1;
+    $stack[1]['l'] = 0;
+    $stack[1]['r'] = count($array)-1;
+
+    do
+    {
+        $l = $stack[$cur]['l'];
+        $r = $stack[$cur]['r'];
+        $cur--;
+
+        do
+        {
+            $i = $l;
+            $j = $r;
+            $tmp = $array[(int)( ($l+$r)/2 )];
+
+            // split the array in to parts
+            // first: objects with "smaller" property $property
+            // second: objects with "bigger" property $property
+            do
+            {
+                while( $array[$i]->{$property} < $tmp->{$property} ) $i++;
+                while( $tmp->{$property} < $array[$j]->{$property} ) $j--;
+
+                // Swap elements of two parts if necesary
+                if( $i <= $j)
+                {
+                    $w = $array[$i];
+                    $array[$i] = $array[$j];
+                    $array[$j] = $w;
+
+                    $i++;
+                    $j--;
+                }
+
+            } while ( $i <= $j );
+
+            if( $i < $r ) {
+                $cur++;
+                $stack[$cur]['l'] = $i;
+                $stack[$cur]['r'] = $r;
+            }
+            $r = $j;
+
+        } while ( $l < $r );
+
+    } while ( $cur != 0 );
+
+    return $array;
+
 }
 
 //add_action ("save_post", "myplugin_save_post");

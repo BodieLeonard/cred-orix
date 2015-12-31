@@ -10,9 +10,7 @@
  * @package Orix
  */
 
-/*
-Template Name: Careers 
-*/
+
 
 get_header(); ?>
 

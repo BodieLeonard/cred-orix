@@ -21,6 +21,8 @@ get_header(); ?>
 	$isSubPage = false;
 	$isCapitalSolutionsMainPage = false;
 	$pageID = $post->ID;
+	$isTeamsOn = ( get_post_meta($post->ID, 'teams_on', true) == "teams_only") ? true:false;
+	$isTeamAndEmployee = ( get_post_meta($post->ID, 'teams_on', true) == "teams_and_employees") ? true:false;
 	?>
 	
 	<?php getHero($secondThumb); ?>
@@ -94,8 +96,7 @@ get_header(); ?>
 					};
 					?>
 
-
-					<?php if (count($numChildren) > 1) : ?>
+					<?php if (count($numChildren) >= 1) : ?>
 						<?php 
 							$colWidth = 9; 
 
@@ -105,23 +106,39 @@ get_header(); ?>
 							if(!$hasBusinessUnits){
 								$colWidth = 12;
 							}
+							if($isTeamsOn){
+								$colWidth = 9; 
+							}
+							if($isTeamAndEmployee){
+								$colWidth = 9; 
+							}
 						?>
 						
-
 						<article class="full col-xs-12 col-md-<?php echo $colWidth; ?>">
 							<div class='holder-bullets row'>
 								<?php 
-								query_posts(array('showposts' => 20, 'post_parent' => get_the_ID(), 'post_type' => 'capitalsolution', 'orderby'=>'menu_order','order'=>'asc')); 
+								
+								$myposts = query_posts(array('showposts' => 20, 'post_parent' => get_the_ID(), 'post_type' => 'capitalsolution', 'orderby'=>'menu_order','order'=>'asc')); ;
+
 								while (have_posts()) : the_post(); ?>
 
 								<?php
+								$icon_name = get_post_meta($post->ID, 'diamond_icon', true);
+								$removeMoreButton = ( get_post_meta($post->ID, 'remove_read_more_button', true)[0]== "On") ? true:false;
+								
+								if(strlen($icon_name) <= 0){
+									$icon_name = get_post_meta($post->ID, 'icon', true);
+								};
 									//$excerpt = get_the_excerpt();
 									$excerpt = get_post_meta($post->ID, 'headline', true);
+
 									$bulletCta = BulletCTA::create([
-										"icomoon"=> "icon-".get_post_meta($post->ID, 'icon', true),
+										"icomoon"=> "icon-".$icon_name,
 										"headline"=>get_the_title(),
 										"excerpt"=> string_limit_words($excerpt,24),
-										"link"=> $post->post_name
+										"link"=> $post->post_name,
+										"count"=>count($myposts),
+										"removeMoreButton"=>$removeMoreButton
 									]);
 								?>
 								<?php endwhile; ?>
@@ -143,6 +160,12 @@ get_header(); ?>
 							}
 							if(!$hasBusinessUnits){
 								$colCenterWidth = 9;
+							}
+							if($isTeamsOn){
+								$colCenterWidth = 9; 
+							}
+							if($isTeamAndEmployee){
+								$colCenterWidth = 9; 
 							}
 
 							

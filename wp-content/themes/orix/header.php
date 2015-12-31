@@ -51,6 +51,26 @@
 			<button class="menu-toggle"><i class="fa fa-bars"></i></button>
 			<?php wp_nav_menu( array( 'theme_location' => 'main-menu' , 'show_home'=>false ) ); ?>
 
+			
+			<?php $mobileMenu = array(
+				  'theme_location'  => 'mobile',
+				  'menu'            => '',
+				  'container'       => '',
+				  'container_class' => false,
+				  'container_id'    => '',
+				  'menu_class'      => 'menu nav-menu mobile-menu',
+				  'menu_id'         => 'menu-main-menu',
+				  'echo'            => true,
+				  'fallback_cb'     => 'wp_page_menu',
+				  'before'          => '',
+				  'after'           => '',
+				  'link_before'     => '',
+				  'link_after'      => '',
+				  'depth'           => 0,
+				  'walker'          => '');
+				wp_nav_menu( $mobileMenu );
+			?>
+				
 			<!-- <ul id="menu-main-menu" class="menu nav-menu mobile-menu">
 				<li id="menu-item-3488" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3488"><a href="/firm/">Our Firm</a></li>
 				<li id="menu-item-3164" class="menu-item menu-item-type-post_type menu-item-object-capitalsolution menu-item-has-children menu-item-3164"><a href="/capital-solution/corporate-capital/">Corporate Capital</a></li>

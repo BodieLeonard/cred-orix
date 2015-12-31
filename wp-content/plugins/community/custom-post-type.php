@@ -44,11 +44,11 @@ function register_cpt_community() {
         'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
-        'has_archive' => true,
+        'has_archive' => false,
         'query_var' => true,
         'can_export' => true,
         'rewrite' => array(
-             'slug' => 'capital-solution', // This controls the base slug that will display before each term
+             'slug' => 'community', // This controls the base slug that will display before each term
              'with_front' => false // Don't display the category base before 
          ),
         'capability_type' => 'post'

@@ -59,7 +59,7 @@ get_header(); ?>
 		  		if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 		  		$bulletCta = BulletCTA::create([
-						"icomoon"=> "icon-".get_post_meta($post->ID, 'icon', true),
+						"icomoon"=> "icon-".get_post_meta($post->ID, 'diamond_icon', true),
 						"headline"=>get_the_title(),
 						"excerpt"=> get_the_excerpt()
 					]);

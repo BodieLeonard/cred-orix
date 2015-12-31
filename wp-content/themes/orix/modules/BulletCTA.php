@@ -10,12 +10,30 @@ class BulletCTA {
 		$excerpt = $args['excerpt'];
 		$link = $args['link'];
 		$target = $args['target'];
-		
+		$count = $args['count'];
+		$removeMoreButton = $args['removeMoreButton'];
+
+
+		$colNumber = 4;
+		if($count <=2){
+			$colNumber = 6;
+		}
 		?>
 		
-		<article class="bullet col-md-4">
+		<article class="bullet col-md-<?php echo $colNumber;?>">
 			<?php if($link) : ?>
 				
+				<?php if($removeMoreButton) {  
+					$class = "hidden"; 
+					$link = "#"; 
+					$target = ""; ?>
+					<style>
+					.content-area .bullet a.hidden {
+					    opacity: 0;
+					}
+					</style>
+				<?php }; ?>
+
 				<a href="<?php echo $link; ?>" target="<?php echo $target; ?>">
 					<div class="diamond"><div class="<?php echo $icomoon; ?>"></div></div>
 				</a>
@@ -23,7 +41,9 @@ class BulletCTA {
 					<h1><?php echo $headline; ?></h1>
 				</a>
 				<blockquote><?php echo $excerpt; ?></blockquote>
-				<a class="button" href="<?php echo $link; ?>" target="<?php echo $target; ?>">Read More</a>
+				
+				<a class="button <?php echo $class; ?>" href="<?php echo $link; ?>" target="<?php echo $target; ?>">Read More</a>
+
 			
 			<?php else : ?>
 				

@@ -10,10 +10,6 @@
  * @package Orix
  */
 
-/*
-Template name: Our Community
-*/
-
 get_header(); ?>
 	
 	<?php
@@ -33,7 +29,8 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 		
 		<section class='centered'>
-			<h1>Our Community</h1>
+			<h1>Community</h1>
+			<?php echo "<p>".get_post_meta($post->ID, 'headline', true)."</p>"; ?>
 			
 		</section>
 
@@ -61,7 +58,7 @@ get_header(); ?>
 				$charMax = 50;
 				$showElips = false;
 			}
-
+			
 			if( get_post_meta($post->ID, 'link', true) ) {
 				$bulletCta = BulletCTA::create([
 					"icomoon"=> "icon-".get_post_meta($post->ID, 'diamond_icon', true),
@@ -80,7 +77,7 @@ get_header(); ?>
 				]);
 			};
 			?>
-			
+
 		<?php endwhile; ?>
 		</div>
 		</article>

@@ -36,12 +36,10 @@ get_header(); ?>
 		if(!empty($qstring)) {
 			$appendFilter = "/?filter=" . $qstring;
 			$filter = 'management-'.$_REQUEST['filter'];
-			query_posts(array( 'post_type' => 'management', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'menu_order', 'order' => 'ASC', "managemenmcategory"=>$filter)); 
-			
+			$posts = query_posts(array( 'post_type' => 'management', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'post_name', 'order' => 'ASC', "managemenmcategory"=>$filter)); 
+
 			$term = get_term_by('slug', $filter, 'managemenmcategory'); 
 			$title = $term->name; 
-
-
 			
 		} else {
 			$title="Our Team";
@@ -53,10 +51,11 @@ get_header(); ?>
 			<h1><?php echo $title; ?></h1>
 		</section>
 
-		<?php while (have_posts()) : the_post(); ?>
+
+		<?php //while ($postshave_posts()) : the_post(); ?>
+		<?php foreach( $posts as $post ) :  ?>
 		
 		<?php
-
 			$excerpt = get_the_excerpt();
 			$ManagementCta = ManagementCTA::create([
 				"thumbnail"=>get_the_post_thumbnail(),
@@ -67,7 +66,8 @@ get_header(); ?>
 				"department"=>get_post_meta($post->ID, 'department', true)
 			]);
 		?>
-		<?php endwhile; ?>
+		<?php //endwhile; ?>
+		<?php endforeach; ?>
 			
 
 

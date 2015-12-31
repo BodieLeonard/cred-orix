@@ -250,6 +250,10 @@ var getAgent = function() {
 	    });
 	    
 	});
+
+   $( 'a[href="#"]' ).click( function(e) {
+      e.preventDefault();
+   } );
 	
 
 	// end jquery 
