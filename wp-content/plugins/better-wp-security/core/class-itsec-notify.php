@@ -17,18 +17,33 @@ class ITSEC_Notify {
 
 		$this->queue = get_site_option( 'itsec_message_queue' );
 
-		if ( isset( $itsec_globals['settings']['digest_email'] ) && $itsec_globals['settings']['digest_email'] === true ) {
+		if ( ITSEC_Modules::get_setting( 'global', 'digest_email' ) ) {
 
-			//Send digest if it has been 24 hours
-			if (
-				$this->queue === false ||
-				(
-					is_array( $this->queue ) &&
-					isset( $this->queue['last_sent'] ) &&
-					$this->queue['last_sent'] < ( $itsec_globals['current_time_gmt'] - 86400 )
-				)
-			) {
-				add_action( 'init', array( $this, 'init' ) );
+			if ( defined( 'ITSEC_NOTIFY_USE_CRON' ) && true === ITSEC_NOTIFY_USE_CRON ) {
+
+				add_action( 'itsec_digest_email', array( $this, 'init' ) ); //Action to execute during a cron run.
+
+				//schedule digest email
+				if ( false === wp_next_scheduled( 'itsec_digest_email' ) ) {
+					wp_schedule_event( time(), 'daily', 'itsec_digest_email' );
+				}
+
+			} else {
+
+				//Send digest if it has been 24 hours
+				if (
+					get_site_transient( 'itsec_notification_running' ) === false && (
+						$this->queue === false ||
+						(
+							is_array( $this->queue ) &&
+							isset( $this->queue['last_sent'] ) &&
+							$this->queue['last_sent'] < ( $itsec_globals['current_time_gmt'] - 86400 )
+						)
+					)
+				) {
+					add_action( 'init', array( $this, 'init' ) );
+				}
+
 			}
 
 		}
@@ -44,7 +59,15 @@ class ITSEC_Notify {
 	 */
 	public function init() {
 
-		global $itsec_globals, $wpdb;
+		global $itsec_globals, $itsec_lockout;
+
+		if ( is_404() || ( ( ! defined( 'ITSEC_NOTIFY_USE_CRON' ) || false === ITSEC_NOTIFY_USE_CRON ) && get_site_transient( 'itsec_notification_running' ) !== false ) ) {
+			return;
+		}
+
+		if ( ( ! defined( 'ITSEC_NOTIFY_USE_CRON' ) || false === ITSEC_NOTIFY_USE_CRON ) ) {
+			set_site_transient( 'itsec_notification_running', true, 3600 );
+		}
 
 		$messages     = false;
 		$has_lockouts = true; //assume a lockout has occured by default
@@ -53,72 +76,61 @@ class ITSEC_Notify {
 			$messages = $this->queue['messages'];
 		}
 
-		$host_count = absint( $wpdb->get_var(
-		                           $wpdb->prepare(
-		                                "SELECT COUNT(*) FROM `" . $wpdb->base_prefix . "itsec_lockouts` WHERE `lockout_start_gmt` > '%s' AND `lockout_host`!='';",
-		                                date( 'Y-m-d H:i:s', $this->queue['last_sent'] )
-		                           )
-		                      ) );
-
-		$user_count = absint( $wpdb->get_var(
-		                           $wpdb->prepare(
-		                                "SELECT COUNT(*) FROM `" . $wpdb->base_prefix . "itsec_lockouts` WHERE `lockout_start_gmt` > '%s' AND ( `lockout_user`!=0 OR `lockout_username` ) is not NULL;",
-		                                date( 'Y-m-d H:i:s', $this->queue['last_sent'] )
-		                           )
-		                      ) );
+		$host_count = sizeof( $itsec_lockout->get_lockouts( 'host', true ) );
+		$user_count = sizeof( $itsec_lockout->get_lockouts( 'user', true ) );
 
 		if ( $host_count == 0 && $user_count == 0 ) {
 
 			$has_lockouts    = false;
-			$lockout_message = __( 'There have been no lockouts since the last email check.', 'it-l10n-better-wp-security' );
+			$lockout_message = __( 'There have been no lockouts since the last email check.', 'better-wp-security' );
 
 		} elseif ( $host_count === 0 && $user_count > 1 ) {
 
 			$lockout_message = sprintf(
 				'%s %s %s',
-				__( 'There have been', 'it-l10n-better-wp-security' ),
+				__( 'There have been', 'better-wp-security' ),
 				$user_count,
-				__( 'users or usernames locked out for attempting to log in with incorrect credentials.', 'it-l10n-better-wp-security' )
+				__( 'users or usernames locked out for attempting to log in with incorrect credentials.', 'better-wp-security' )
 			);
 
 		} elseif ( $host_count === 0 && $user_count == 1 ) {
 
 			$lockout_message = sprintf(
 				'%s %s %s',
-				__( 'There has been', 'it-l10n-better-wp-security' ),
+				__( 'There has been', 'better-wp-security' ),
 				$user_count,
-				__( 'user or username locked out for attempting to log in with incorrect credentials.', 'it-l10n-better-wp-security' )
+				__( 'user or username locked out for attempting to log in with incorrect credentials.', 'better-wp-security' )
 			);
 
 		} elseif ( $host_count == 1 && $user_count === 0 ) {
 
 			$lockout_message = sprintf(
 				'%s %s %s',
-				__( 'There has been', 'it-l10n-better-wp-security' ),
+				__( 'There has been', 'better-wp-security' ),
 				$host_count,
-				__( 'host locked out.', 'it-l10n-better-wp-security' )
+				__( 'host locked out.', 'better-wp-security' )
 			);
 
 		} elseif ( $host_count > 1 && $user_count === 0 ) {
 
 			$lockout_message = sprintf(
 				'%s %s %s',
-				__( 'There have been', 'it-l10n-better-wp-security' ),
+				__( 'There have been', 'better-wp-security' ),
 				$host_count,
-				__( 'hosts locked out.', 'it-l10n-better-wp-security' )
+				__( 'hosts locked out.', 'better-wp-security' )
 			);
 
 		} else {
 
 			$lockout_message = sprintf(
 				'%s %s %s %s %s %s %s',
-				__( 'There have been', 'it-l10n-better-wp-security' ),
+				__( 'There have been', 'better-wp-security' ),
 				$user_count + $host_count,
-				__( 'lockout(s) including', 'it-l10n-better-wp-security' ),
+				__( 'lockout(s) including', 'better-wp-security' ),
 				$user_count,
-				__( 'user(s) and', 'it-l10n-better-wp-security' ),
+				__( 'user(s) and', 'better-wp-security' ),
 				$host_count,
-				__( 'host(s) locked out of your site.', 'it-l10n-better-wp-security' )
+				__( 'host(s) locked out of your site.', 'better-wp-security' )
 			);
 
 		}
@@ -131,7 +143,9 @@ class ITSEC_Notify {
 
 				foreach ( $messages as $message ) {
 
-					$module_message .= '<p>' . $message . '</p>';
+					if ( is_string( $message ) ) {
+						$module_message .= '<p>' . $message . '</p>';
+					}
 
 				}
 
@@ -139,22 +153,22 @@ class ITSEC_Notify {
 
 			$body = sprintf(
 				'<p>%s,</p><p>%s <a href="%s">%s</a></p><p><strong>%s: </strong>%s</p>%s<p>%s %s</p><p>%s <a href="%s">%s</a>.</p>',
-				__( 'Dear Site Admin', 'it-l10n-better-wp-security' ),
-				__( 'The following is a summary of security related activity on your site. For details please visit', 'it-l10n-better-wp-security' ),
-				wp_login_url( get_admin_url( '', 'admin.php?page=toplevel_page_itsec_logs' ) ),
-				__( 'the security logs', 'it-l10n-better-wp-security' ),
-				__( 'Lockouts', 'it-l10n-better-wp-security' ),
+				__( 'Dear Site Admin', 'better-wp-security' ),
+				__( 'The following is a summary of security related activity on your site. For details please visit', 'better-wp-security' ),
+				wp_login_url( ITSEC_Core::get_logs_page_url() ),
+				__( 'the security logs', 'better-wp-security' ),
+				__( 'Lockouts', 'better-wp-security' ),
 				$lockout_message,
 				$module_message,
 				__( 'This email was generated automatically by' ),
 				$itsec_globals['plugin_name'],
-				__( 'To change your email preferences please visit', 'it-l10n-better-wp-security' ),
-				wp_login_url( get_admin_url( '', 'admin.php?page=toplevel_page_itsec_settings' ) ),
-				__( 'the plugin settings', 'it-l10n-better-wp-security' )
+				__( 'To change your email preferences please visit', 'better-wp-security' ),
+				wp_login_url( ITSEC_Core::get_settings_page_url() ),
+				__( 'the plugin settings', 'better-wp-security' )
 			);
 
 			//Setup the remainder of the email
-			$subject = '[' . get_option( 'siteurl' ) . '] ' . __( 'Daily Security Digest', 'it-l10n-better-wp-security' );
+			$subject = '[' . get_option( 'siteurl' ) . '] ' . __( 'Daily Security Digest', 'better-wp-security' );
 			$subject = apply_filters( 'itsec_lockout_email_subject', $subject );
 			$headers = 'From: ' . get_bloginfo( 'name' ) . ' <' . get_option( 'admin_email' ) . '>' . "\r\n";
 
@@ -205,15 +219,19 @@ class ITSEC_Notify {
 			'h4'     => array(),
 		);
 
-		if ( isset( $itsec_globals['settings']['digest_email'] ) && $itsec_globals['settings']['digest_email'] === true ) {
+		if ( ITSEC_Modules::get_setting( 'global', 'digest_email' ) ) {
 
-			$this->queue['messages'][] = wp_kses( $body, $allowed_tags );
+			if ( ! in_array( wp_kses( $body, $allowed_tags ), $this->queue['messages'] ) ) {
 
-			update_site_option( 'itsec_message_queue', $this->queue );
+				$this->queue['messages'][] = wp_kses( $body, $allowed_tags );
+
+				update_site_option( 'itsec_message_queue', $this->queue );
+
+			}
 
 			return true;
 
-		} else {
+		} else if ( ITSEC_Modules::get_setting( 'global', 'email_notifications', true ) ) {
 
 			$subject = trim( sanitize_text_field( $body['subject'] ) );
 			$message = wp_kses( $body['message'], $allowed_tags );
@@ -234,6 +252,8 @@ class ITSEC_Notify {
 
 		}
 
+		return true;
+
 	}
 
 	/**
@@ -252,7 +272,7 @@ class ITSEC_Notify {
 
 		global $itsec_globals;
 
-		$recipients  = $itsec_globals['settings']['notification_email'];
+		$recipients  = ITSEC_Modules::get_setting( 'global', 'notification_email' );
 		$all_success = true;
 
 		add_filter( 'wp_mail_content_type', array( $this, 'wp_mail_content_type' ) );
@@ -261,7 +281,11 @@ class ITSEC_Notify {
 
 			if ( is_email( trim( $recipient ) ) ) {
 
-				$success = wp_mail( trim( $recipient ), $subject, $message, $headers );
+				if ( defined( 'ITSEC_DEBUG' ) && ITSEC_DEBUG === true ) {
+					$message .= '<p>' . __( 'Debug info (source page): ' . esc_url( $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ) ) . '</p>';
+				}
+
+				$success = wp_mail( trim( $recipient ), $subject, '<html>' . $message . '</html>', $headers );
 
 				if ( $all_success === true && $success === false ) {
 					$all_success = false;

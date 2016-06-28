@@ -42,6 +42,10 @@ gulp.task('app', function() {
 
 gulp.task('sass', function () {
   return gulp.src(srcSass+'*.scss')
+    .pipe(compass({
+        config_file: srcSass+'config.rb'
+      , sass: 'sass'
+    }))
     .pipe(gulp.dest("./"))
     .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
 });
@@ -59,4 +63,4 @@ gulp.task('libs', function() {
     .pipe(gulp.dest('./'));
 });
  
-gulp.task('default', ['templates',  'watch', 'sass']);
+gulp.task('default', ['templates', 'webserver', 'watch', 'sass']);
