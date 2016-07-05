@@ -10,7 +10,7 @@ global $post;
 
 function register_cpt_firm() {
 
-    $PLUGIN_NAME = "Our Firm";
+    $PLUGIN_NAME = "Firm";
     $PLUGIN_NAME_SINGULAR = "Firm";
     $PLUGIN_NAME_SINGULAR_LOWER = "firm";
     $PLUGIN_NAME_LOWER = "firms";

@@ -36,7 +36,7 @@ get_header(); ?>
 				<?php
 
 				$colNum = 12;
-				
+
 
 
 				$term_id = $wpdb->get_row("SELECT term_id FROM wp_terms WHERE slug = 'management-$post->post_name'")->term_id;

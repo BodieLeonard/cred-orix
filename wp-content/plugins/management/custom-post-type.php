@@ -10,7 +10,7 @@ global $post;
 
 function register_cpt_management() {
 
-    $PLUGIN_NAME = "Orix Management";
+    $PLUGIN_NAME = "Management";
     $PLUGIN_NAME_SINGULAR = "Management";
     $PLUGIN_NAME_SINGULAR_LOWER = "management";
     $PLUGIN_NAME_LOWER = "Mmnagements";

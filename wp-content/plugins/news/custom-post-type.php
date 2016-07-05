@@ -10,7 +10,7 @@ global $post;
 
 function register_cpt_news() {
 
-    $PLUGIN_NAME = "Orix News";
+    $PLUGIN_NAME = "News";
     $PLUGIN_NAME_SINGULAR = "News";
     $PLUGIN_NAME_SINGULAR_LOWER = "news";
     $PLUGIN_NAME_LOWER = "news";

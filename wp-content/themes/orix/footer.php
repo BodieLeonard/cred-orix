@@ -41,12 +41,15 @@
 			<div class="col-md-3 list">
 				<h1>CAPITAL SOLUTIONS</h1>
 				
-				<?php 
+				<?php
 
 					$args = array( 'post_type' => 'capitalsolution', 'post_parent' => 0, 'orderby' => 'title', 'order' => 'asc' );
 					$loop = new WP_Query( $args );
 					while ( $loop->have_posts() ) : $loop->the_post();
-					    echo '<a href="/'.$post->post_name.'">'.$post->post_title.'</a>';
+							if($post->post_title !== "Corporate Capital")
+							{
+								echo '<a href="/' . $post->post_name . '">' . $post->post_title . '</a>';
+							}
 					endwhile;
 				?>
 
@@ -136,6 +139,93 @@ $( "form.contact-us" ).submit(function( e ) {
 </script>
 
 
+
+<!-- FLOODLIGHT TAGS -->
+<!-- Tag for Activity Group: Boston Financial, Activity Name: Boston Financial Adtl Info Click, Activity ID: 3573249 -->
+<!-- Expected URL: http://www.orix.com -->
+
+<!--
+Activity ID: 3573249
+Activity Name: Boston Financial Adtl Info Click
+Activity Group Name: Boston Financial
+-->
+
+<!--
+Start of DoubleClick Floodlight Tag: Please do not remove
+Activity name of this tag: Boston Financial Adtl Info Click
+URL of the webpage where the tag is expected to be placed: http://www.orix.com
+This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+Creation Date: 06/17/2016
+-->
+<script type="text/javascript">
+	var axel = Math.random() + "";
+	var a = axel * 10000000000000;
+	document.write('<iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto00;dc_lat=;dc_rdid=3573249;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+</script>
+<noscript>
+	<iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto00;dc_lat=;dc_rdid=3573249;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+</noscript>
+<!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+
+
+
+<!-- Tag for Activity Group: Boston Financial, Activity Name: Boston Financial Download PDF Click, Activity ID: 3573250 -->
+<!-- Expected URL: http://www.orix.com -->
+
+<!--
+Activity ID: 3573250
+Activity Name: Boston Financial Download PDF Click
+Activity Group Name: Boston Financial
+-->
+
+<!--
+Start of DoubleClick Floodlight Tag: Please do not remove
+Activity name of this tag: Boston Financial Download PDF Click
+URL of the webpage where the tag is expected to be placed: http://www.orix.com
+This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+Creation Date: 06/17/2016
+-->
+<script type="text/javascript">
+	var axel = Math.random() + "";
+	var a = axel * 10000000000000;
+	document.write('<iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto000;dc_lat=;dc_rdid=3573250;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+</script>
+<noscript>
+	<iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto000;dc_lat=;dc_rdid=3573250;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+</noscript>
+<!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+
+
+<!-- Tag for Activity Group: Boston Financial, Activity Name: Boston Financial LP, Activity ID: 3575657 -->
+<!-- Expected URL: http://www.orix.com -->
+
+<!--
+Activity ID: 3575657
+Activity Name: Boston Financial LP
+Activity Group Name: Boston Financial
+-->
+
+<!--
+Start of DoubleClick Floodlight Tag: Please do not remove
+Activity name of this tag: Boston Financial LP
+URL of the webpage where the tag is expected to be placed: http://www.orix.com
+This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+Creation Date: 06/17/2016
+-->
+<script type="text/javascript">
+	var axel = Math.random() + "";
+	var a = axel * 10000000000000;
+	document.write('<iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto0;dc_lat=;dc_rdid=3575657;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+</script>
+<noscript>
+	<iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto0;dc_lat=;dc_rdid=3575657;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+</noscript>
+<!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+
+
+
+
+<!-- END FLOODLIGHT TAGS -->
 
 </body>
 </html>

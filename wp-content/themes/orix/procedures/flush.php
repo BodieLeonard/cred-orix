@@ -1,2 +1,1 @@
-<?php 
-flush_rewrite_rules();
+<?php  flush_rewrite_rules();

@@ -10,7 +10,7 @@ global $post;
 
 function register_cpt_proven_success() {
 
-    $PLUGIN_NAME = "Orix Proven Success";
+    $PLUGIN_NAME = "Proven Success";
     $PLUGIN_NAME_SINGULAR = "Proven Success";
     $PLUGIN_NAME_SINGULAR_LOWER = "proven success";
     $PLUGIN_NAME_LOWER = "proven success";

@@ -11,13 +11,13 @@
  */
 
 get_header(); ?>
-	<?php
-	if(!empty(wp_get_attachment_image_src( get_post_thumbnail_id(), 'full')[0])) :
+<?php
+if(!empty(wp_get_attachment_image_src( get_post_thumbnail_id(), 'full')[0])) :
 
-	?><div class="hero short" style="background-image: url(<?php echo wp_get_attachment_image_src( get_post_thumbnail_id(), 'full')[0] ?>) ">
-	
+?><div class="hero short" style="background-image: url(<?php echo wp_get_attachment_image_src( get_post_thumbnail_id(), 'full')[0] ?>) ">
+
 	<?php else : ?>
-	
+
 		<?php
 		$post_home = get_post(3652);
 		$secondThumb = MultiPostThumbnails::get_post_thumbnail_url( 'page', 'secondary-image', $post_home->ID	);
@@ -29,11 +29,11 @@ get_header(); ?>
 		<?php getHero($secondThumb); ?>
 
 	<?php endif; ?>
-	
-		
-	</div>
 
-	<div id="content" class="site-content">
+
+</div>
+
+<div id="content" class="site-content">
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -46,7 +46,7 @@ get_header(); ?>
 				</section>
 
 				<article class="full  simple">
-				<?php get_template_part( 'content', 'page' ); ?>
+					<?php get_template_part( 'content', 'page' ); ?>
 				</article>
 				<?php #get_template_part( 'content', 'newsroom' ); ?>
 
@@ -55,5 +55,5 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+	<?php get_sidebar(); ?>
+	<?php get_footer(); ?>

@@ -10,7 +10,7 @@ global $post;
 
 function register_cpt_career() {
 
-    $PLUGIN_NAME = "Orix Careers";
+    $PLUGIN_NAME = "Careers";
     $PLUGIN_NAME_SINGULAR = "Career";
     $PLUGIN_NAME_SINGULAR_LOWER = "career";
     $PLUGIN_NAME_LOWER = "careers";

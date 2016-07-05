@@ -12,7 +12,11 @@
 
 get_header(); ?>
 
-	<?php $image_url = get_the_post_thumbnail_src(get_the_post_thumbnail()); ?>
+
+
+
+
+<?php $image_url = get_the_post_thumbnail_src(get_the_post_thumbnail()); ?>
 	<div class="hero" style="background-image: url(<?php echo $image_url; ?>) ">
 		
 		<article class="hero-article">

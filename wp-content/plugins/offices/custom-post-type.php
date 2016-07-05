@@ -10,7 +10,7 @@ global $post;
 
 function register_cpt_offices() {
 
-    $PLUGIN_NAME = "Orix Office";
+    $PLUGIN_NAME = "Office";
     $PLUGIN_NAME_SINGULAR = "Office";
     $PLUGIN_NAME_SINGULAR_LOWER = "offices";
     $PLUGIN_NAME_LOWER = "Mmnagements";

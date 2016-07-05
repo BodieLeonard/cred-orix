@@ -12,6 +12,7 @@
 			</li>
 			<?php 
 			$tax_terms = get_terms('provensuccesscategory');
+
 			foreach ($tax_terms as $tax_term) {
 				if($tax_term->parent > 0) {
 					

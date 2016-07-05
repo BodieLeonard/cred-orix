@@ -23,7 +23,8 @@
 //define('DB_HOST', '127.0.0.1');
 //define('DB_CHARSET', 'utf8');
 //define('DB_COLLATE', '');
-define('DB_NAME', 'orix_2015');
+//define('DB_NAME', 'orix_2015');
+define('DB_NAME', 'orix_7_29_16');
 
 define('DB_USER', 'root');
 define('DB_PASSWORD', 'Summer123@');

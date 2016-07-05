@@ -10,7 +10,7 @@ global $post;
 
 function register_cpt_homepage_cta() {
 
-    $PLUGIN_NAME = "Orix Homepage CTA";
+    $PLUGIN_NAME = "Homepage CTA";
     $PLUGIN_NAME_SINGULAR = "Homepage CTA";
     $PLUGIN_NAME_SINGULAR_LOWER = "homepagecta";
     $PLUGIN_NAME_LOWER = "homepagecta";

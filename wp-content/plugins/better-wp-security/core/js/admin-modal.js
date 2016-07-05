@@ -3,26 +3,25 @@ jQuery( document ).ready( function () {
 	//setup the tooltip
 	jQuery( '#itsec_intro_modal' ).dialog(
 		{
-			dialogClass   : 'wp-dialog itsec-setup-dialog',
-			modal         : true,
-			closeOnEscape : false,
-			title         : itsec_tooltip_text.title,
-			width         : '75%',
-			resizable     : false,
-			draggable     : false,
-			close         : function ( event, ui ) {
+			dialogClass  : 'wp-dialog itsec-setup-dialog',
+			modal        : true,
+			closeOnEscape: false,
+			title        : itsec_tooltip_text.title,
+			width        : '75%',
+			resizable    : false,
+			draggable    : false,
+			close        : function ( event, ui ) {
 
 				var data = {
-					action : 'itsec_tooltip_ajax',
-					module : 'close',
-					nonce  : itsec_tooltip_text.nonce
+					action: 'itsec_tooltip_ajax',
+					module: 'close',
+					nonce : itsec_tooltip_text.nonce
 				};
 
 				//call the ajax
 				jQuery.post( ajaxurl, data, function () {
 
 					var url = window.location.href;
-					console.log( url );
 					url = url.substring( 0, url.lastIndexOf( "&" ) );
 
 					window.location.replace( url );
@@ -30,7 +29,6 @@ jQuery( document ).ready( function () {
 				} );
 
 			}
-
 
 		}
 	);
@@ -50,9 +48,9 @@ jQuery( document ).ready( function () {
 		var caller = this;
 
 		var data = {
-			action : 'itsec_tooltip_ajax',
-			module : module,
-			nonce  : itsec_tooltip_text.nonce
+			action: 'itsec_tooltip_ajax',
+			module: module,
+			nonce : itsec_tooltip_text.nonce
 		};
 
 		//let user know we're working

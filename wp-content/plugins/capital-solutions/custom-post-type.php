@@ -10,7 +10,7 @@ global $post;
 
 function register_cpt_capital_solutions() {
 
-    $PLUGIN_NAME = "Orix Capital Solutions";
+    $PLUGIN_NAME = "Capital Solutions";
     $PLUGIN_NAME_SINGULAR = "Capital Solution";
     $PLUGIN_NAME_SINGULAR_LOWER = "capital solution";
     $PLUGIN_NAME_LOWER = "capital solutions";

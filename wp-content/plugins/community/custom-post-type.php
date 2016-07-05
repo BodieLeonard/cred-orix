@@ -10,7 +10,7 @@ global $post;
 
 function register_cpt_community() {
 
-    $PLUGIN_NAME = "Orix Community";
+    $PLUGIN_NAME = "Community";
     $PLUGIN_NAME_SINGULAR = "Community";
     $PLUGIN_NAME_SINGULAR_LOWER = "community";
     $PLUGIN_NAME_LOWER = "community";
