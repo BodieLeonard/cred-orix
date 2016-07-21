@@ -138,94 +138,57 @@ $( "form.contact-us" ).submit(function( e ) {
  
 </script>
 
+<!-- load floodlight onclick -->
+<!-- add this click event to a link in order for floodlight to track
+	onclick="callFloodlight_new("123456", "foo246", "bar468");" -->
 
-
-<!-- FLOODLIGHT TAGS -->
-<!-- Tag for Activity Group: Boston Financial, Activity Name: Boston Financial Adtl Info Click, Activity ID: 3573249 -->
-<!-- Expected URL: http://www.orix.com -->
-
-<!--
-Activity ID: 3573249
-Activity Name: Boston Financial Adtl Info Click
-Activity Group Name: Boston Financial
--->
-
-<!--
-Start of DoubleClick Floodlight Tag: Please do not remove
-Activity name of this tag: Boston Financial Adtl Info Click
-URL of the webpage where the tag is expected to be placed: http://www.orix.com
-This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
-Creation Date: 06/17/2016
--->
-<script type="text/javascript">
-	var axel = Math.random() + "";
-	var a = axel * 10000000000000;
-	document.write('<iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto00;dc_lat=;dc_rdid=3573249;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
-</script>
-<noscript>
-	<iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto00;dc_lat=;dc_rdid=3573249;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
-</noscript>
-<!-- End of DoubleClick Floodlight Tag: Please do not remove -->
-
-
-
-<!-- Tag for Activity Group: Boston Financial, Activity Name: Boston Financial Download PDF Click, Activity ID: 3573250 -->
-<!-- Expected URL: http://www.orix.com -->
 
 <!--
 Activity ID: 3573250
 Activity Name: Boston Financial Download PDF Click
 Activity Group Name: Boston Financial
+https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto000;dc_lat=;dc_rdid=3573250;tag_for_child_directed_treatment=;ord=
 -->
-
 <!--
-Start of DoubleClick Floodlight Tag: Please do not remove
-Activity name of this tag: Boston Financial Download PDF Click
-URL of the webpage where the tag is expected to be placed: http://www.orix.com
-This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
-Creation Date: 06/17/2016
+Activity ID: 3573249
+Activity Name: Boston Financial Adtl Info Click
+Activity Group Name: Boston Financial
+https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto00;dc_lat=;dc_rdid=3573249;tag_for_child_directed_treatment=;ord=
 -->
-<script type="text/javascript">
-	var axel = Math.random() + "";
-	var a = axel * 10000000000000;
-	document.write('<iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto000;dc_lat=;dc_rdid=3573250;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
-</script>
-<noscript>
-	<iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto000;dc_lat=;dc_rdid=3573250;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
-</noscript>
-<!-- End of DoubleClick Floodlight Tag: Please do not remove -->
-
-
-<!-- Tag for Activity Group: Boston Financial, Activity Name: Boston Financial LP, Activity ID: 3575657 -->
-<!-- Expected URL: http://www.orix.com -->
-
 <!--
 Activity ID: 3575657
 Activity Name: Boston Financial LP
 Activity Group Name: Boston Financial
--->
-
-<!--
-Start of DoubleClick Floodlight Tag: Please do not remove
-Activity name of this tag: Boston Financial LP
-URL of the webpage where the tag is expected to be placed: http://www.orix.com
-This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
-Creation Date: 06/17/2016
+cat=bosto0
+https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto0;dc_lat=;dc_rdid=3575657;tag_for_child_directed_treatment=;ord=
 -->
 <script type="text/javascript">
-	var axel = Math.random() + "";
-	var a = axel * 10000000000000;
-	document.write('<iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto0;dc_lat=;dc_rdid=3575657;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+	function callFloodlight_new(source, type, cat) {
+				var tag_url="http://fls.doubleclick.net/activityi;src=" + source + ";type=" + type + ";cat=" + cat + ";ord=1;num="+Math.floor(Math.random()*999999)+"?";
+				if(document.getElementById("DCLK_FLDiv")){var flDiv=document.getElementById("DCLK_FLDiv");}
+				else{var flDiv=document.body.appendChild(document.createElement("div"));flDiv.id="DCLK_FLDiv";flDiv.style.display="none";}
+				var DCLK_FLIframe=document.createElement("iframe");
+				DCLK_FLIframe.id="DCLK_FLIframe_"+Math.floor(Math.random()*999999);
+				DCLK_FLIframe.src=tag_url;
+				flDiv.appendChild(DCLK_FLIframe);
+			}
+
 </script>
-<noscript>
-	<iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto0;dc_lat=;dc_rdid=3575657;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
-</noscript>
-<!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+<script type="text/javascript">
+function callFloodlight(source, type, cat) {
+				var tag_url="http://fls.doubleclick.net/activityi;src=" + source + ";type=" + type + ";cat=" + cat + ";ord=1;num="+Math.floor(Math.random()*999999)+"?";
+				if(document.getElementById("DCLK_FLDiv")){var flDiv=document.getElementById("DCLK_FLDiv");}
+				else{var flDiv=document.body.appendChild(document.createElement("div"));flDiv.id="DCLK_FLDiv";flDiv.style.display="none";}
+				var DCLK_FLIframe=document.createElement("iframe");
+				DCLK_FLIframe.id="DCLK_FLIframe_"+Math.floor(Math.random()*999999);
+				DCLK_FLIframe.src=tag_url;
+				flDiv.appendChild(DCLK_FLIframe);
+			}
 
 
+</script>
 
 
-<!-- END FLOODLIGHT TAGS -->
 
 </body>
 </html>

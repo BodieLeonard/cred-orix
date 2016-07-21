@@ -55,7 +55,7 @@
 			
 			<?php $mobileMenu = array(
 				  'theme_location'  => 'mobile',
-				  'menu'            => '',
+				  'menu'            => 'main-menu-mobile',
 				  'container'       => '',
 				  'container_class' => false,
 				  'container_id'    => '',

@@ -52,10 +52,11 @@ get_header(); ?>
 		if(!empty($qstring)) {
 			$appendFilter = "/?filter=" . $qstring;
 			#$filter = 'provensuccess-'.$_REQUEST['filter'];
+			/// filter was menu_order
 			$filter = $_REQUEST['filter'];
-			query_posts(array( 'post_type' => 'provensuccess', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'menu_order', 'order' => 'ASC',  "provensuccesscategory"=>$filter)); 
+			query_posts(array( 'post_type' => 'provensuccess', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'post_content', 'order' => 'ASC',  "provensuccesscategory"=>$filter)); 
 		} else {
-			query_posts(array( 'post_type' => 'provensuccess', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'menu_order', 'order' => 'ASC' )); 
+			query_posts(array( 'post_type' => 'provensuccess', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'post_content', 'order' => 'ASC' )); 
 		}
 		while (have_posts()) : the_post();
 

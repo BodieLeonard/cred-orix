@@ -76,20 +76,23 @@ $showTransactions = get_post_meta($pageID, 'show_transactions', true);
 					<?php
 				};
 
-				$children = wp_list_pages('title_li=&child_of='.$sidebar_pid.'&post_type=capitalsolution&echo=0');
+				$children = wp_list_pages('title_li=&child_of='.$sidebar_pid.'&post_type=capitalsolution&echo=0&depth=1');
 				$numChildren = get_pages('title_li=&child_of='.$post->ID.'&post_type=capitalsolution&echo=0');
+				$hideBusiness = get_post_meta($pageID, 'business_units_on', true);
+				$showTransactions = get_post_meta($pageID, 'show_transactions', true);
+
 				?>
 
 				<?php
-				if($isSubPage) {
+				if($isSubPage && (!$hideBusiness || $showTransactions)) {
 					echo "<div class='col-xs-12 col-md-3'>";
 
-					$showTransactions = get_post_meta($pageID, 'show_transactions', true);
 					if($showTransactions){
 						get_template_part( 'content', 'sidebar-proven-success-link' );
 					}
 
 					get_template_part( 'content', 'sidebar-capital-solutions' );
+					
 					echo "</div>";
 				} else if($showTransactions){
 					echo "<div class='col-xs-12 col-md-3'>";
@@ -113,6 +116,7 @@ $showTransactions = get_post_meta($pageID, 'show_transactions', true);
 					if($showTransactions){
 						$colWidth = 6;
 					}
+
 					?>
 
 

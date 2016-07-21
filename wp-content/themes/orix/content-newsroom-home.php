@@ -60,7 +60,7 @@ if ($onHomePage) {
 	$args = array(
 		'post_type' => 'news',
 		'post_status'=>'publish',
-		'posts_per_page' => 6,
+		'posts_per_page' => 3,
 		'orderby'=> 'date',
 		'order' => 'DEC',
 		'tax_query' =>  array( 'taxonomy' => 'newsscategory', 'terms' => 'news-featured','operator' => 'NOT IN' )
