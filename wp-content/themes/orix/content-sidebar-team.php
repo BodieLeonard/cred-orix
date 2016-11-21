@@ -47,8 +47,6 @@ if($isOnlyTeam){
 
 }
 
-
-
 $termSQL = "SELECT term_id, name, slug FROM ".$wpdb->prefix."terms WHERE slug = '$teamName'";
 $term = $wpdb->get_results($termSQL)[0];
 

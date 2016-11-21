@@ -26,9 +26,6 @@ Template name: Video
 get_header(); ?>
 
 <?php
-$post_home = get_post(3754);
-$secondThumb = MultiPostThumbnails::get_post_thumbnail_url( 'page', 'secondary-image', $post_home->ID	);
-$pageID = $post->ID;
 
 $taxonomy = 'video-'.$_REQUEST['filter'];
 $filter = (isset($_REQUEST['filter'])) ? $_REQUEST['filter'] : "ORIX";
@@ -56,27 +53,7 @@ if(isset($_REQUEST['filter'])){
 
 };
 ?>
-<?php #getHero($secondThumb); ?>
-<script src="/wp-content/themes/orix/js/iphone-inline-video.browser.js"></script>
-
-<div class="video-container">
-    <video autoplay muted loop webkit-playsinline>
-        <source src="/wp-content/uploads/video/orix_video_full.mp4" type="video/mp4">
-        <source src="/wp-content/uploads/video/orix_video_full.ogv" type="video/ogg">
-        <source src="/wp-content/uploads/video/orix_video_full.webm" type="video/webm">
-        Your browser doesn't support HTML5 video.
-    </video>
-    <div id="controls"> <a onclick="videoMute()" id="btn-mute"><i class="fa fa-volume-down" aria-hidden="true"></i></a> </div>
-</div>
-
-<script>
-    var video = document.querySelector('video'),
-      videoBtn = document.getElementById('btn-mute');
-    makeVideoPlayableInline(video);
-    video.addEventListener('touchstart', function () {
-        video.play();
-    });
-</script>
+<?php get_template_part( 'content', 'video' ); ?>
 
 
 <div id="content" class="site-content">

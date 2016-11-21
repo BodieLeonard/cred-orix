@@ -230,7 +230,10 @@ var getAgent = function() {
 		}
 	}
 
-	
+	Orix.fn.videoAdjustHeight = function() {
+		$("video").css({"height":($(window).height()-$(".site-header").height())+"px"})
+	}
+	//Orix.fn.videoAdjustHeight();
 
 	Orix.fn.init = function () {
 		// initialize

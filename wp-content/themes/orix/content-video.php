@@ -1,26 +1,20 @@
-<?php
-/**
- * The template used for displaying video content in page.php
- *
- * @package Orix
- */
-?>
-<section class='centered full col-xs-13 col-md-9 simple'>
-    <?php
+<script src="/wp-content/themes/orix/js/iphone-inline-video.browser.js"></script>
 
-    $title = $post->post_title;
-    $content = $post->post_content;
+<div class="video-container">
+    <video autoplay muted loop webkit-playsinline>
+        <source src="/wp-content/uploads/video/orix_video_full.mp4" type="video/mp4">
+        <source src="/wp-content/uploads/video/orix_video_full.ogv" type="video/ogg">
+        <source src="/wp-content/uploads/video/orix_video_full.webm" type="video/webm">
+        Your browser doesn't support HTML5 video.
+    </video>
+    <div id="controls"> <a onclick="videoMute()" id="btn-mute"><i class="fa fa-volume-down" aria-hidden="true"></i></a> </div>
+</div>
 
-    ?>
-    <h1><?php echo $title; ?></h1>
-</section>
-
-<article class="full col-xs-13 col-md-9 simple">
-    <?php the_content(); ?>
-</article>
-
-<!-- <section class='centered'>
-	<h1><?php the_title(); ?></h1>
-	<p><?php #echo get_post_meta($post->ID, 'headline', true); ?></p>
-</section> -->
-
+<script>
+    var video = document.querySelector('video'),
+      videoBtn = document.getElementById('btn-mute');
+    makeVideoPlayableInline(video);
+    video.addEventListener('touchstart', function () {
+        video.play();
+    });
+</script>
