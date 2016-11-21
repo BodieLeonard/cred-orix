@@ -33,7 +33,7 @@ function uuc_add_content() {
 		FinishMessage = "It is finally here!";
 		</script>
 
-		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="//code.jquery.com/jquery-latest.min.js"></script>
 
 		<?php
 		echo '<script src="' . plugin_dir_url(__FILE__) . 'js/base.js"></script>';

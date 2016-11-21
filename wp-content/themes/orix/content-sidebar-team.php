@@ -28,13 +28,13 @@ if($isOnlyTeam){
 	$teamName = get_post_meta($post->ID, 'team_name', true);
 	$teamManagementCategory = get_post_meta($post->ID, 'management_category', true);
 	$teamNameSlug = str_replace("management-", "", $teamName);
-	$termEmployee = $wpdb->get_row("SELECT term_id, name, slug FROM wp_terms WHERE slug = '$teamManagementCategory'");
+	$termEmployee = $wpdb->get_row("SELECT term_id, name, slug FROM ".$wpdb->prefix."terms WHERE slug = '$teamManagementCategory'");
 
 	$termEmployee_id = $termEmployee->term_id;
-	$termEmployee_taxonomy_id = $wpdb->get_row("SELECT term_taxonomy_id FROM wp_term_taxonomy WHERE term_id = '$termEmployee_id'")->term_taxonomy_id;
+	$termEmployee_taxonomy_id = $wpdb->get_row("SELECT term_taxonomy_id FROM ".$wpdb->prefix."term_taxonomy WHERE term_id = '$termEmployee_id'")->term_taxonomy_id;
 
 	// relationship
-	$relationsEmployee = "SELECT * FROM wp_term_relationships WHERE term_taxonomy_id = '$termEmployee_taxonomy_id'";
+	$relationsEmployee = "SELECT * FROM ".$wpdb->prefix."term_relationships WHERE term_taxonomy_id = '$termEmployee_taxonomy_id'";
 	$termEmployee_object_ids = $wpdb->get_results($relationsEmployee);
 
 
@@ -47,17 +47,22 @@ if($isOnlyTeam){
 
 }
 
-$term = $wpdb->get_row("SELECT term_id, name, slug FROM wp_terms WHERE slug = '$teamName'");
+
+
+$termSQL = "SELECT term_id, name, slug FROM ".$wpdb->prefix."terms WHERE slug = '$teamName'";
+$term = $wpdb->get_results($termSQL)[0];
+
+//$term = $wpdb->get_row("SELECT term_id, name, slug FROM ".$wpdb->prefix."terms WHERE slug = '$teamName'");
 $term_id = $term->term_id;
 
-// wp_term_taxonomy
-$term_taxonomy_id = $wpdb->get_row("SELECT term_taxonomy_id FROM wp_term_taxonomy WHERE term_id = '$term_id'")->term_taxonomy_id;
+// ".$wpdb->prefix."term_taxonomy
+$term_taxonomy_id = $wpdb->get_row("SELECT term_taxonomy_id FROM ".$wpdb->prefix."term_taxonomy WHERE term_id = '$term_id'")->term_taxonomy_id;
 
 // relationship
-$relations = "SELECT * FROM wp_term_relationships WHERE term_taxonomy_id = '$term_taxonomy_id'";
+$relations = "SELECT * FROM ".$wpdb->prefix."term_relationships WHERE term_taxonomy_id = '$term_taxonomy_id'";
 $term_object_ids = $wpdb->get_results($relations);
 
-$managementCatSlug = $wpdb->get_row("SELECT slug FROM wp_terms WHERE slug = 'management-$post->post_name'")->slug;
+$managementCatSlug = $wpdb->get_row("SELECT slug FROM ".$wpdb->prefix."terms WHERE slug = 'management-$post->post_name'")->slug;
 
 $managementCatSlugArr = explode("-", $managementCatSlug);
 array_shift($managementCatSlugArr);
@@ -77,7 +82,7 @@ $mainPage = $post->post_name;
 // checkbox in capital solutions
 // and Orix Managemnt must have the page slug in the cat name
 $hasGroups = (get_post_meta($post->ID, 'teams_on', true)[0] == "On") ? true:false;
-//print_r( $wpdb->get_row("SELECT term_id FROM wp_terms WHERE slug = 'management-$post->post_name-foobar'") );
+//print_r( $wpdb->get_row("SELECT term_id FROM ".$wpdb->prefix."terms WHERE slug = 'management-$post->post_name-foobar'") );
 
 if($isOnlyTeam){
 	$hasGroups = true;

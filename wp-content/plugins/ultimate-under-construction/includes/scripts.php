@@ -8,10 +8,12 @@ global $wp_version;
 //All Actions to be added.
 add_action('init', 'uuc_load_scripts');
 
-if ( $wp_version >= 3.5 ){
-add_action('init', 'uuc_admin_enqueue_scripts_cp');
-} else {
-add_action('init', 'uuc_admin_enqueue_scripts_farb');
+if ( is_admin() ) {
+    if ( $wp_version >= 3.5 ) {
+        add_action ( 'init', 'uuc_admin_enqueue_scripts_cp' );
+    } else {
+        add_action ( 'init', 'uuc_admin_enqueue_scripts_farb' );
+    }
 }
 
 //All functions mentioned above to be added below here only!

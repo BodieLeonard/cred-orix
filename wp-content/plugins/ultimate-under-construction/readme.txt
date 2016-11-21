@@ -2,8 +2,8 @@
 Contributors: HappyKite, Morrowmedia
 Tags: Under construction, holding page, construction, holding, page, private, preview, coming soon
 Requires at least: 3.0.1
-Tested up to: 4.5
-Stable tag: 1.9
+Tested up to: 4.6.1
+Stable tag: 1.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,8 @@ This Under Construction plugin allows for many levels of customisation, with mil
 * Javascript Fix.
 * Adding new Committer.
 * New Images.
+= 1.9.1 =
+* FIX - Allowing the scripts to be loaded on https.
 
 == Upgrade Notice ==
 Please Upgrade - FlipClock doesn't load reliably on v1.6 - Issue has been fixed on 1.7
