@@ -11741,3 +11741,47 @@ body {
         display: none;
     }
 }
+
+
+.IIV::-webkit-media-controls-play-button,
+.IIV::-webkit-media-controls-start-playback-button {
+    opacity: 0;
+    pointer-events: none;
+    width: 5px;
+}
+.video-container, video{
+    position: relative;
+    display: block;
+    background: white;
+    width: 100%;
+    margin: auto;
+    margin-bottom:30px;
+    padding-top:30px;
+}
+
+#controls{
+    position: absolute;
+    bottom:40px;
+    right:40px;
+    text-align: left;
+    cursor: pointer;
+}
+#controls i{
+    font-size:30px;
+    color:white;
+    width:40px;
+}
+figure {
+    width: 100%;
+}
+@media screen and (max-width: 1320px) {
+    .video-container, video{
+        margin-bottom:30px;
+        padding-top:0px;
+    }
+}
+@media screen and (max-width: 500px) {
+    #controls{
+        display:none;
+    }
+}

@@ -280,9 +280,25 @@ var getAgent = function() {
 		$(".news-breaking").remove();
 		$(".main-navigation").css("margin-top","0");
 	})
+
+
+
 	// end jquery 
 })(jQuery);
 
+
+
+
+function videoMute(){
+	if(video.muted){
+		video.muted = false;
+		videoBtn.innerHTML='<i class="fa fa-volume-up" aria-hidden="true"></i>';
+	} else {
+		video.muted = true;
+		videoBtn.innerHTML='<i class="fa fa-volume-down" aria-hidden="true"></i>';
+
+	}
+}
 
 
 

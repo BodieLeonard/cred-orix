@@ -1,4 +1,7 @@
 <?php
+/** Enable W3 Total Cache */
+define('WP_CACHE', true); // Added by W3 Total Cache
+
 
 /**
  * The base configurations of the WordPress.
@@ -24,9 +27,9 @@
 //define('DB_CHARSET', 'utf8');
 //define('DB_COLLATE', '');
 //define('DB_NAME', 'orix_2015');
-define('DB_NAME', 'orix_7_29_16');
+define('DB_NAME', 'orix_local');
 
-define('DB_USER', 'root');
+define('DB_USER', 'bleonard');
 define('DB_PASSWORD', 'Summer123@');
 define('DB_HOST', '127.0.0.1');
 define('DB_CHARSET', 'utf8');

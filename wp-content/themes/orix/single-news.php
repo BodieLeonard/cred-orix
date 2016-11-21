@@ -53,7 +53,3 @@ $secondThumb = MultiPostThumbnails::get_post_thumbnail_url( 'page', 'secondary-i
 
 
 <?php get_footer(); ?>
-
-
-
-
