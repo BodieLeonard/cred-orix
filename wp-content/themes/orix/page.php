@@ -44,7 +44,7 @@ get_header(); ?>
 					<p><?php echo get_post_meta($post->ID, 'headline', true); ?></p>
 				</section>
 
-				<article class="full  simple">
+				<article class="full  simple col-xs-12 col-md-12">
 				<?php get_template_part( 'content', 'page' ); ?>
 				</article>
 				<?php #get_template_part( 'content', 'newsroom' ); ?>

@@ -80,6 +80,23 @@ wp_reset_query();
     background: #86152F;
     border: none;
   }
+  @media screen and (max-width: 1300px) {
+    .news-breaking {
+      height:100px;
+    }
+    .main-navigation {
+      margin-top: 95px;
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    .news-breaking {
+      height:150px;
+    }
+    .main-navigation {
+      margin-top: 145px;
+    }
+  }
+
 </style>
 
 <?php endif; ?>

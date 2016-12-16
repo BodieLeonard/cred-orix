@@ -11740,6 +11740,15 @@ body {
     .checker {
         display: none;
     }
+
+}
+
+@media screen and (max-width: 1320px) {
+    
+    .site-branding .site-title a {
+        background-size: 53%;
+        margin: 5px 0 0 5px;
+    }
 }
 
 
@@ -11774,6 +11783,30 @@ body {
 figure {
     width: 100%;
 }
+
+.menu.nav-menu.mobile-menu .sub-menu {
+    display:block;
+    position: relative;
+    float:none;
+    border:none;
+    width:100%;
+}
+.menu.nav-menu.mobile-menu .sub-menu:before {
+    background: none;
+
+}
+.menu.nav-menu.mobile-menu .sub-menu li {
+    background:#efefef;
+
+}
+.menu.nav-menu.mobile-menu .sub-menu li a{
+    background:#efefef;
+    color:#333;
+    text-align: center;
+    border: none;
+}
+
+
 @media screen and (max-width: 1320px) {
     .video-container, video{
         margin-bottom:30px;

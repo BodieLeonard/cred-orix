@@ -12,7 +12,7 @@
 		$content = $post->post_content;
 
 	?>
-	<h1><?php echo $title; ?></h1>
+	<h1 style="width:85%;"><?php echo $title; ?></h1>
 </section>
 
 <article class="full col-xs-13 col-md-9 simple">

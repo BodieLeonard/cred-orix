@@ -74,7 +74,7 @@ if ($onHomePage) {
 
 		$articleCta = ArticleCTA::create([
 			"thumbnail"=> get_the_post_thumbnail(),
-			"headline"=>string_limit_words($title, 6),
+			"headline"=>string_limit_words($title, 7),
 			"date"=>$post->post_date,
 			"excerpt"=> string_limit_words($excerpt,20),
 			"link"=>$post->guid."&filter=".$pageSlug

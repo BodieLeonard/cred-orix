@@ -22,6 +22,8 @@ $main_intro_paragraph = get_post_meta($post_id, 'main_intro_paragraph')[0];
 $leader_qa_headline = get_post_meta($post_id, 'leader_qa_headline')[0];
 $leader_qa_paragraph = get_post_meta($post_id, 'leader_qa_paragraph')[0];
 $center_image_headline = get_post_meta($post_id, 'center_image_headline')[0];
+$center_image_headline = get_post_meta($post_id, 'center_image_headline')[0];
+
 
 #$center_image = get_post_meta($post_id, 'center_image')[0];
 
@@ -85,11 +87,15 @@ get_header();
   .content-area article.management-cta {
     margin-right: 30px;
   }
+.content-area article.management-cta.col-md-4 {
+    margin-right: 0px;
+  }
   .content-area article.management-cta .thumb {
     width:100%;
     height:auto;
     background:transparent;
     max-height:198px;
+    min-height: 200px;
   }
   .content-area article img{
     max-width: 170px;
@@ -115,6 +121,14 @@ get_header();
   .content-area article.management-cta em {
     min-height: 70px;
   }
+article.simple > ul > li {
+      margin-bottom:30px;
+  }
+.breaking-news h3.centered {
+      text-align:center;
+  }
+
+
 
 
 </style>
@@ -130,7 +144,7 @@ get_header();
       <div class="col-md-12">
           <h1><?php echo $headline; ?></h1>
           <article class="simple headline">
-            <h3><?php echo $subHeadline; ?></h3>
+            <h3 class="centered"><?php echo $subHeadline; ?></h3>
           </article>
       </div>
       </section>
@@ -141,99 +155,58 @@ get_header();
 
         <p class="content-holder"><?php echo $leader_qa_paragraph; ?></p>
 
+        <?php 
+        $cimg = get_post_meta($post_id, 'center_image', true);
+        $chead = get_post_meta($post_id, 'center_image_headline')[0];
+        if( isset($chead) && !empty($cimg) ) { ?>
+          <hr>
+          <section class="centered"><h1><?php echo $center_image_headline; ?></h1></section>
+          <img class="full" src="<?php echo wp_get_attachment_url( $center_image );?>"/>
+        <?php }; ?>
+        
+        <?php 
+        $close = get_post_meta($post_id, 'closing_content', true);
+        if( !empty($close) ) { ?>
+          <hr>
+          <p class="content-holder"><?php echo $closing_content; ?></p>
+        <?php }; ?>
+
+
+
         <hr>
-
-        <section class="centered"><h1><?php echo $center_image_headline; ?></h1></section>
-
-        <img class="full" src="<?php echo wp_get_attachment_url( $center_image );?>"/>
-        <hr>
-
-
-        <p class="content-holder"><?php echo $closing_content; ?></p>
-
-
-        <hr>
-
 
         <section class="centered"><h1>Get To Know Our Leaders</h1></section>
-        <span><?php #echo $bios; ?></span>
+        <?php 
+        $bios = explode(",",$bios);
+        foreach ($bios as $key => $value) {
+          
+          $result = query_posts(array( 'post_type' => 'management', 'post_status'=>'publish', 'posts_per_page' => -1, 'name'=>$value));
+          
+          if(!empty($result)){
+            $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($result[0]->ID), 'post')[0];
+            $thumb = '<img width="1500" height="1750" src="'.$thumb.'" class="attachment-post-thumbnail wp-post-image" alt="">';
+            $title =  get_post_meta($result[0]->ID, 'title', true); 
+            $name = $result[0]->post_title;
+          } else {
+            $thumb = '<span style="font-size: 290px;color: #bcbcbc;position: relative;left: -15px;bottom:-2px;" class="icon-profiledefault"></span>';  
+            $title = 'Unknown';
+            $name = $value;
+          }
+        ?>
+          <article class="management-cta col-md-4">
+            <div class="thumb"><?php echo $thumb; ?> </div>
+            <h1><?php echo $name; ?></h1>
+            <em style="height:45px"><?php echo $title; ?></em>
+            <a class="button" href="/<?php echo $value; ?>">Read More</a>
+          </article>
 
+        <?php }; ?> 
 
-
-        <article class="management-cta col-md-2">
-          <div class="thumb">
-            <img width="1500" height="1750" src="/wp-content/uploads/2014/10/Hideto-Nishitani-Web.jpg"
-                 class="attachment-post-thumbnail wp-post-image" alt="Hideto-Nishitani-Web"></div>
-          <h1>Hideto Nishitani</h1>
-          <em style="height:45px">
-            Chairman, President and Chief Executive Officer </em>
-
-          <a class="button" href="hideto-nishitani/?filter=executives">Read More</a>
-
-        </article>
-
-
-        <article class="management-cta col-md-2">
-          <div class="thumb">
-            <img width="1500" height="1750" src="/wp-content/uploads/2014/10/Andrew-Garvey-Web.jpg" class="attachment-post-thumbnail wp-post-image" alt="Andrew-Garvey-Web">								</div>
-          <h1>Andrew Garvey</h1>
-          <em style="height:45px">
-            Senior Managing Director and Head of ORIX Municipal & Infrastructure Finance </em>
-
-          <a class="button" href="andrew-garvey/?filter=business-unit-leadership">Read More</a>
-
-        </article>
-
-        <article class="management-cta col-md-2">
-          <div class="thumb">
-            <img width="1500" height="1750" src="/wp-content/uploads/2016/07/Ken-larger-1.jpg" class="attachment-post-thumbnail wp-post-image" alt="KEN CUTILLO">								</div>
-          <h1>Kenneth Cutillo</h1>
-          <em style="height:45px">
-            CEO<br>Boston Financial Investment Management</em>
-
-          <a class="button" href="/management/kenneth-j-cutillo/?filter=business-unit-leadership">Read More</a>
-
-        </article>
-
-        <article class="management-cta col-md-2">
-          <div class="thumb">
-            <img width="1500" height="1750" src="/wp-content/uploads/2014/10/Jonathan-Kern-Web.jpg" class="attachment-post-thumbnail wp-post-image" alt="Jonathan-Kern-Web">								</div>
-          <h1>Jonathan S. Kern</h1>
-          <em style="height:45px">
-            Senior Managing Director and Chief Investment Officer Direct Investment Operations									</em>
-
-          <a class="button" href="jonathan-s-kern/?filter=executives">Read More</a>
-
-        </article>
-
-        <article class="management-cta col-md-2">
-          <div class="thumb">
-            <img width="1500" height="1750" src="/wp-content/uploads/2016/07/T_Meylor.jpg" class="attachment-post-thumbnail wp-post-image" alt="Ted Meylor">								</div>
-          <h1>EDWARD MEYLOR</h1>
-          <em style="height:45px">Chairman & CEO <br/>RED Capital Group, LLC</em>
-
-          <a class="button" href="/management/edward-meylor/?filter=business-unit-leadership">Read More</a>
-
-        </article>
-
-
-
-
-
-
-
-
-
-
-
+        
         <hr>
-
         <section class="centered"><h1>Learn More</h1></section>
         <span><?php echo $links; ?></span>
       </article>
-
-
-
 
     </main><!-- #main -->
   </div><!-- #primary -->
@@ -246,12 +219,12 @@ This tag must be placed between the <body> and </body> tags, as close as possibl
 Creation Date: 06/17/2016
 -->
 <script type="text/javascript">
-	var axel = Math.random() + "";
-	var a = axel * 10000000000000;
-	document.write('<iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto0;dc_lat=;dc_rdid=3575657;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+  var axel = Math.random() + "";
+  var a = axel * 10000000000000;
+  document.write('<iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto0;dc_lat=;dc_rdid=3575657;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
 </script>
 <noscript>
-	<iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto0;dc_lat=;dc_rdid=3575657;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+  <iframe src="https://5765050.fls.doubleclick.net/activityi;src=5765050;type=gener0;cat=bosto0;dc_lat=;dc_rdid=3575657;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
 </noscript>
 <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
 

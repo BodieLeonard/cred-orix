@@ -29,7 +29,7 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <link rel="shortcut icon" href="/favicon.ico" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-
+<link rel="stylesheet" id="orix-style-css" href="http://www.orix.com/wp-content/themes/orix/style.css" type="text/css" media="all">
 
 
 <?php wp_head(); ?>
@@ -52,22 +52,12 @@
 			<button class="menu-toggle"><i class="fa fa-bars"></i></button>
 			<?php wp_nav_menu( array( 'theme_location' => 'main-menu' , 'show_home'=>false ) ); ?>
 
-			
 			<?php $mobileMenu = array(
-				  'theme_location'  => 'mobile',
-				  'menu'            => 'main-menu-mobile',
-				  'container'       => '',
-				  'container_class' => false,
-				  'container_id'    => '',
+				  'menu'            => 'main-menu',
 				  'menu_class'      => 'menu nav-menu mobile-menu',
 				  'menu_id'         => 'menu-main-menu',
 				  'echo'            => true,
-				  'fallback_cb'     => 'wp_page_menu',
-				  'before'          => '',
-				  'after'           => '',
-				  'link_before'     => '',
-				  'link_after'      => '',
-				  'depth'           => 0,
+				  'depth'           => 2,
 				  'walker'          => '');
 				wp_nav_menu( $mobileMenu );
 			?>
