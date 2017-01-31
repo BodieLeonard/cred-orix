@@ -29,7 +29,8 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <link rel="shortcut icon" href="/favicon.ico" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" id="orix-style-css" href="http://www.orix.com/wp-content/themes/orix/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="orix-style-css" href="/wp-content/themes/orix/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="orix-print-css" href="/wp-content/themes/orix/print.css" type="text/css" media="print">
 
 
 <?php wp_head(); ?>
