@@ -7,7 +7,7 @@
  * @package Orix
  */
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "//www.w3.org/TR/html4/loose.dtd">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <html>
 
@@ -25,11 +25,11 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?php wp_title( '|', true, 'right' ); ?></title>
-<!-- <link rel="profile" href="http://gmpg.org/xfn/11"> -->
+<!-- <link rel="profile" href="//gmpg.org/xfn/11"> -->
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <link rel="shortcut icon" href="/favicon.ico" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" id="orix-style-css" href="/wp-content/themes/orix/style.css" type="text/css" media="all">
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" id="orix-style-css" href="/wp-content/themes/orix/style.css?v2.1" type="text/css" media="all">
 <link rel="stylesheet" id="orix-print-css" href="/wp-content/themes/orix/print.css" type="text/css" media="print">
 
 
