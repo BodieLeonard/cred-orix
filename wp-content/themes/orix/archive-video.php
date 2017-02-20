@@ -66,14 +66,24 @@ if(isset($_REQUEST['filter'])){
 
         <main id="main" class="site-main col-xs-13 col-md-9 news" role="main">
 
-            <?php while ( have_posts() ) : the_post(); ?>
+            <div class="row">
+                <?php while ( have_posts() ) : the_post(); ?>
 
-                <article class="full simple">
-                    <date><?php the_date(); ?></date>
-                    <h1><a href="<?php the_permalink();?>"><?php  the_title(); ?></a> </h1>
-                </article>
+                    <article class="col-md-4">
+                        
+                        <?php $thumb = get_field('video_thumb')['url'] ?>
+                        <?php if($thumb !== '') { ?>
+                                <a href="<?php the_permalink();?>" class="thumb" style="background-image:url(<?php echo $thumb; ?>)" ></a>
+                        <?php } else { echo ''; }   ?>
 
-            <?php endwhile; // end of the loop. ?>
+                        <h1><a href="<?php the_permalink();?>"><?php  the_title(); ?></a> </h1>
+                        <p><?php echo get_the_excerpt(); ?>
+                        <date><?php echo get_the_date(); ?></date>
+                        
+                    </article>
+
+                <?php endwhile; // end of the loop. ?>
+            </div>
 
         </main><!-- #main -->
         <div class="col-xs-12 col-md-3 pull-right">
