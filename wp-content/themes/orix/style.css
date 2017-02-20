@@ -11806,6 +11806,25 @@ figure {
     border: none;
 }
 
+body.post-type-archive-video #content.site-content .content-area #main {
+    margin-top:0;
+}
+.post-type-archive-video .thumb{
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top center;
+    width:100%;
+    height:150px;
+    margin-bottom:20px;
+}
+body.post-type-archive-video #content article h1, .post-type-archive-video date {
+    text-align: center;
+    margin-bottom:0px;
+}
+body.post-type-archive-video #content date {
+    color:#bbb;
+}
 
 @media screen and (max-width: 1320px) {
     .video-container, video{
