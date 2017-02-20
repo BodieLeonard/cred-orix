@@ -37,7 +37,7 @@
 				<h1>Company</h1>
 				<?php wp_nav_menu( array( 'theme_location' => 'main-menu' , 'show_home'=>false, 'depth'=>1 ,'orderby' => 'menu_order', 'order' => 'asc') ); ?>
 				<div class="menu-main-menu-container">
-					<ul class="menu"><li class="menu-item"><a href="/video">Our Video</a></li></ul>
+					<ul class="menu"><li class="menu-item"><a href="/video">Our Videos</a></li></ul>
 				</div>
 			</div>
 
