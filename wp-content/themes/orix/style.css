@@ -10417,6 +10417,13 @@ section.boxed p {
     max-width: 260px
 }
 
+.content-area article .img-full {
+    left: 0;
+    margin: 0;
+    max-width: 100%;
+    margin-bottom: 28px;
+}
+
 .content-area article date {
     font-family: "BrandonMed";
     font-size: 14px;
