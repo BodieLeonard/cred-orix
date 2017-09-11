@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/cred-orix.iml" filepath="$PROJECT_DIR$/.idea/cred-orix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Orix.iml" filepath="$PROJECT_DIR$/.idea/Orix.iml" />
     </modules>
   </component>
 </project>

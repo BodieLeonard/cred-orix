@@ -29,8 +29,8 @@ define('WP_CACHE', true); // Added by W3 Total Cache
 //define('DB_NAME', 'orix_2015');
 define('DB_NAME', 'orix_local');
 
-define('DB_USER', 'root');
-define('DB_PASSWORD', 'root');
+define('DB_USER', 'bleonard');
+define('DB_PASSWORD', 'Summer123@');
 define('DB_HOST', '127.0.0.1');
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
@@ -68,7 +68,7 @@ define( 'WPCF7_ADMIN_READ_WRITE_CAPABILITY', 'manage_options' );
  */
 $table_prefix  = 'wp_';
 
-/**
+/** 
  * WordPress Localized Language, defaults to English.
  *
  * Change this to localize WordPress. A corresponding MO file for the chosen

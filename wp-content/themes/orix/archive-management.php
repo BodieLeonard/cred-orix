@@ -14,6 +14,17 @@
 Template name: Management
 */
 
+$qstring = $_REQUEST['filter'];
+if(empty($_GET)) {
+
+} else {
+  if( empty($_GET['filter'])) {
+    print_r($_GET);
+    wp_redirect('/');
+    exit;
+  }
+}
+
 get_header(); ?>
 
 	<?php
@@ -34,10 +45,9 @@ get_header(); ?>
 		}
 		?>
 
-		<?php 
-		$qstring = $_REQUEST['filter'];
+		<?php
 		if(!empty($qstring)) {
-			
+
 			//add_filter( 'posts_orderby' , 'posts_orderby_lastname' );
 			
 			$appendFilter = "/?filter=" . $qstring;
@@ -51,7 +61,7 @@ get_header(); ?>
 			
 		} else {
 			$title="Our Team";
-			query_posts(array( 'post_type' => 'management', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'menu_order', 'order' => 'ASC')); 
+			query_posts(array( 'post_type' => 'management', 'post_status'=>'publish', 'posts_per_page' => -1, 'orderby'=> 'menu_order', 'order' => 'ASC'));
 		}
 
 		?>
